@@ -23,14 +23,18 @@ namespace API.Controllers
         [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<Patient>>> GetPatients()
         {
-            return await _context.Patients.ToListAsync();;
+            return await _context.Patients.ToListAsync();
         }
 
-        [Authorize]
+
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Patient>> GetPatientById(int id)
         {
-            return await _context.Patients.FindAsync(id);;
+            return await _context.Patients.FindAsync(id);
         }
+
+
+
     }
 }

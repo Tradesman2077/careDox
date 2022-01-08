@@ -1,0 +1,23 @@
+<h4>Internal Server Error - refresh page to make error dissapear</h4>
+
+    <ng-container *ngIf="error">
+        <h5 class="text-danger">Error: {{error.message}}</h5>
+        <p class="font-weight-bold">Note: If you are seeign this then angular is probably not the issue </p>
+        <p>
+            other options
+        </p>
+        <ol>
+            <li> Open chrome dev tools to check error</li>
+            <li>Look into network tab</li>
+            <li>check failing request</li>
+            <li>Examnine request URL - check it is correctly written in the string</li>
+            <li>use postman or insomnia to chewck the problem see if you can reproduce it there (if response is same then its not the client side)</li>
+
+        </ol>
+        <p>
+            stack trace
+        </p>
+        <code class="mt-5" style="background-color:whitesmoke">
+            {{error.details}}
+        </code>
+    </ng-container>

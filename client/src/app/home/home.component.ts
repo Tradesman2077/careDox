@@ -9,19 +9,17 @@ import { AccountService } from '../_services/account.service';
 })
 export class HomeComponent implements OnInit {
   registerMode = false;
-  patients: any;
 
-  constructor(private http: HttpClient, public accountService: AccountService) { }
+
+  constructor( public accountService: AccountService) { }
 
   ngOnInit(): void {
-    this.getPatients();
+ 
   }
 
   registerToggle(){
     this.registerMode = !this.registerMode;
   }
 
-  getPatients(){
-    this.http.get('https://localhost:5001/api/patient').subscribe(patients => this.patients = patients);
-  }
+
 }
