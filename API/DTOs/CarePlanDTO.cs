@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Entities;
 
 namespace API.DTOs
 {
@@ -10,6 +11,7 @@ namespace API.DTOs
         public int PatientId { get; set; }
 
         public string LevelOfUnderstanding { get; set; }
+        public Patient Patient { get; set; }
         public string Communication { get; set; }
         public string Mobility { get; set; }
         public string PersonalCare { get; set; }

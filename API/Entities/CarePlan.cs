@@ -8,8 +8,8 @@ namespace API.Entities
     public class CarePlan
     {
         public int Id { get; set; }
+        public Patient Patient { get; set; }
         public int PatientId { get; set; }
-
         public string LevelOfUnderstanding { get; set; }
         public string Communication { get; set; }
         public string Mobility { get; set; }

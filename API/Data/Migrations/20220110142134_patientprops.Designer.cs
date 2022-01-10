@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220110142134_patientprops")]
+    partial class patientprops
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.0");
@@ -20,6 +22,7 @@ namespace API.Data.Migrations
             modelBuilder.Entity("API.Entities.CarePlan", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Communication")
@@ -65,6 +68,9 @@ namespace API.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PatientId")
+                        .IsUnique();
 
                     b.ToTable("CarePlans");
                 });
@@ -173,7 +179,7 @@ namespace API.Data.Migrations
                 {
                     b.HasOne("API.Entities.Patient", "Patient")
                         .WithOne("CarePlan")
-                        .HasForeignKey("API.Entities.CarePlan", "Id")
+                        .HasForeignKey("API.Entities.CarePlan", "PatientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
