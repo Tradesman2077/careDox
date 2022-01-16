@@ -1,1 +1,34 @@
-<p>profile works!</p>
+<div class="row"  *ngIf="staff">
+    <div class="col-8" style="float:none;margin:auto;">
+        <div class="card">
+            <h5 class="p-2">Your Profile</h5>
+            <img src="{{staff.photoUrl || 'assets/male_carer.jpg'}}" alt="{{staff.fullname}}"
+             class="card-img-top img-thumbnail" >
+            <div class="card-body">
+                <div>
+                    <strong>Name:</strong>
+                    <p>{{staff.fullName}}</p>
+                </div>
+                <div>
+                    <strong>Details:</strong>
+                    <p>{{staff.address}}</p>
+                </div>
+                <div>
+                    <strong>Age:</strong>
+                    <p>{{staff.age}}</p>
+                </div>
+                <div>
+                    <strong>Member Since:</strong>
+                    <p>{{staff.created}}</p>
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <div class="btn-group d-flex">
+                    <button class="btn btn-primary">Edit</button>
+                    <button class="btn btn-secondary" routerLink="/">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

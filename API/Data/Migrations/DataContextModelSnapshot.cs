@@ -20,6 +20,7 @@ namespace API.Data.Migrations
             modelBuilder.Entity("API.Entities.CarePlan", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Communication")
@@ -77,6 +78,9 @@ namespace API.Data.Migrations
 
                     b.Property<string>("Address")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("CarePlanId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("TEXT");
@@ -169,17 +173,6 @@ namespace API.Data.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("API.Entities.CarePlan", b =>
-                {
-                    b.HasOne("API.Entities.Patient", "Patient")
-                        .WithOne("CarePlan")
-                        .HasForeignKey("API.Entities.CarePlan", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Patient");
-                });
-
             modelBuilder.Entity("API.Entities.Patient", b =>
                 {
                     b.HasOne("API.Entities.StaffUser", null)
@@ -196,11 +189,6 @@ namespace API.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("StaffUser");
-                });
-
-            modelBuilder.Entity("API.Entities.Patient", b =>
-                {
-                    b.Navigation("CarePlan");
                 });
 
             modelBuilder.Entity("API.Entities.StaffUser", b =>

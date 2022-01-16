@@ -3,4 +3,3 @@ export interface User {
     token: string;
 }
 
-let data = 42;

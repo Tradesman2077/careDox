@@ -21,9 +21,9 @@ namespace API.Data
             _context = context;
         }
 
-        public async Task<SimplifiedUserDTO> GetSimplifiedUserAsync(int id)
+        public async Task<SimplifiedUserDTO> GetSimplifiedUserAsync(string username)
         {
-            return await _context.Users.Where(x => x.Id == id)
+            return await _context.Users.Where(x => x.UserName == username)
             .ProjectTo<SimplifiedUserDTO>(_mapper.ConfigurationProvider)
                     .SingleOrDefaultAsync();
                 

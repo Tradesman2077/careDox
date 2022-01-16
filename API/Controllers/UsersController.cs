@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class UsersController : BaseApiController
     {
         
@@ -34,10 +34,10 @@ namespace API.Controllers
             return Ok(users);
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<SimplifiedUserDTO>> GetUserById(int id)
+        [HttpGet("{username}")]
+        public async Task<ActionResult<SimplifiedUserDTO>> GetUserByUserName(string username)
         {
-            return await _userRepository.GetSimplifiedUserAsync(id);
+            return await _userRepository.GetSimplifiedUserAsync(username);
 
         }
     } 

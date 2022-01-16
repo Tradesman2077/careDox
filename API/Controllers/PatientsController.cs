@@ -7,15 +7,21 @@ using API.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using API.Interfaces;
+using AutoMapper;
 
 namespace API.Controllers
 {
+    [Authorize]
     public class PatientsController : BaseApiController
     {
+        private readonly IPatientRepository _patientRepository;
+
         private readonly DataContext _context;
-        public PatientsController(DataContext context)
+        public PatientsController(DataContext context, IPatientRepository patientRepository)
         {
             _context = context;
+            _patientRepository = patientRepository;
         }
 
 
@@ -27,11 +33,13 @@ namespace API.Controllers
         }
 
 
+        
+
         [HttpGet("{id}")]
-        [AllowAnonymous]
-        public async Task<ActionResult<Patient>> GetPatientById(int id)
+        public async Task<ActionResult<Patient>> GetPatientByUserName(int id)
         {
-            return await _context.Patients.FindAsync(id);
+            return await _patientRepository.GetUserByIdAsync(id);
+
         }
 
 

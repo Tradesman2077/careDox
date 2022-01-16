@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col-10" style="float:none;margin:auto;">
+        <div class="card">
+            <h5 class="pt-4 pl-3">Patient Profile</h5>
+            <!--<img src='assets/user.jpg' alt="{{patient.fullname}}"
+             class="card-img-top img-thumbnail">-->
+            <div class="card-body">
+                <div>
+                    <strong>Name:</strong>
+                    <p>{{patient?.name}}</p>
+                </div>
+                <div>
+                    <strong>Address:</strong>
+                    <p>{{patient.address}}</p>
+                </div>
+                <div>
+                    <strong>Date of Birth:</strong>
+                    <p>{{patient.dateOfBirth}}</p>
+                </div>
+                <div>
+                    <strong>
+                        Gender:</strong>
+                    <p>{{patient.gender}}</p>
+                </div>
+                <div>
+                    <ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
+                        <ngb-panel id="static-1" title="Care Plan" class="text">
+                          <ng-template ngbPanelContent>
+                            <strong>
+                                Level Of Understanding:</strong>
+                            <p>{{plan.levelOfUnderstanding}}</p>
+                            <strong>
+                                Communication:</strong>
+                            <p>{{plan.communication}}</p>
+                            <strong>
+                                Mobility:</strong>
+                            <p>{{plan.mobility}}</p>
+                            <strong>
+                                Personal Care:</strong>
+                            <p>{{plan.personalCare}}</p>
+                            <strong>
+                                Continence Care:</strong>
+                            <p>{{plan.continenceCare}}</p>
+                            <strong>
+                                Oral Care:</strong>
+                            <p>{{plan.oralCare}}</p>
+                            <strong>
+                                Nutrician and Dehydration:</strong>
+                            <p>{{plan.nutritionAndHydration}}</p>
+                            <strong>
+                                Skin Care:</strong>
+                            <p>{{plan.skinCare}}</p>
+                            <strong>
+                                Interests and Hobbies:</strong>
+                            <p>{{plan.interestsAndHobbies}}</p>
+                            <strong>
+                                Mental health:</strong>
+                            <p>{{plan.mentalHealth}}</p>
+                            <strong>
+                                End Of Life preference:</strong>
+                            <p>{{plan.eolPref}}</p>
+                            <strong>
+                                Religious and Cultural Considerations:</strong>
+                            <p>{{plan.religiousAndCulturalBeliefs}}</p>
+                          </ng-template>
+                        </ngb-panel>
+                        <ngb-panel id="static-2" title="Medication">
+                            <ng-template ngbPanelContent>
+                              {{plan.medication}}
+                            </ng-template>
+                          </ngb-panel>
+                    </ngb-accordion>    
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <div class="btn-group d-flex">
+                    <button class="btn btn-primary">Mark as completed</button>
+                    <button class="btn btn-secondary" routerLink="/">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

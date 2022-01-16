@@ -18,13 +18,7 @@ namespace API.Data
         public DbSet<Patient> Patients{get; set;}
         public DbSet<CarePlan> CarePlans{get; set;}
         
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Patient>()
-        .HasOne(a => a.CarePlan).WithOne(b => b.Patient)
-        .HasForeignKey<CarePlan>(e => e.Id);
-        
-        }
+
 
     }
 }
