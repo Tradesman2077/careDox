@@ -1,0 +1,29 @@
+<div class="col8" >
+    <div class="row">
+          <h4>{{staff?.fullName}} - Clients</h4>
+    </div>
+    <button class="btn btn-success m-1">Add a client</button>
+    <table class="table table-striped">
+    <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let patient of patients; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            <i class="fa fa-user mr-2"></i>
+            {{ patient.id }}
+          </td>
+          <td>{{ patient.name}}</td>
+          <td>{{ patient.address}}</td>
+          <td><button class="btn btn-warning">Remove</button></td>
+        </tr>
+        </tbody>
+      </table>
+</div>

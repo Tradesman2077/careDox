@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using API.Entities;
 using API.Interfaces;
 using AutoMapper;
+using API.DTOs;
 
 namespace API.Data
 {
@@ -30,6 +31,20 @@ namespace API.Data
         public Task<IEnumerable<Patient>> GetUsersAsync()
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<string> RegisterPatient(Patient patient)
+        {
+
+            _context.Add(patient);
+            if(await _context.SaveChangesAsync() > 0){
+                return "Patient Added";
+            }
+            else{
+                return "Something went wrong";
+            }
+            
+            
         }
 
         public Task<bool> SaveAllAsync()

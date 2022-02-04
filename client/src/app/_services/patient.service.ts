@@ -1,5 +1,7 @@
 import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Patient } from '../_models/Patient';
 
@@ -11,15 +13,33 @@ import { Patient } from '../_models/Patient';
 export class PatientService {
   baseUrl = environment.apiUrl;
 
+  patients: Patient[] = [];
+
+
 
   constructor(private http: HttpClient) {
     
    }
    getPatients() {
-    return this.http.get<Patient[]>(this.baseUrl + 'patients');
+     if(this.patients.length > 0) return of(this.patients);
+    return this.http.get<Patient[]>(this.baseUrl + 'patients').pipe(
+      map(patients => {
+        this.patients = patients;
+        return patients;
+      })
+    )
   }
 
   getPatientById(id: number){
+    const patient = this.patients.find(x => x.id === id);
+    if(patient !== undefined){
+      return of (patient);
+    }
     return this.http.get<Patient>(this.baseUrl + 'patients/' + id);
+  }
+
+  registerPatient(model: any){
+    return this.http.post(this.baseUrl + 'registerpatient', model);
+    
   }
 }

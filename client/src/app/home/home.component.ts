@@ -9,29 +9,16 @@ import { AccountService } from '../_services/account.service';
 })
 export class HomeComponent implements OnInit {
   registerMode = false;
-  adminMode = false;
+  
   patientList = [];
 
   constructor( public accountService: AccountService) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem("user")){
-      var user = JSON.parse(localStorage.getItem("user"));
-      if(user["isAdmin"] == true){
-        this.adminMode = true;
-
-      }
+    
 
     }
     
   }
 
 
-  registerToggle(){
-    this.registerMode = !this.registerMode;
-  }
-  cancelRegisterMode(event : boolean ){
-    this.registerMode = event;
-  }
-
-}

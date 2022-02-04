@@ -38,7 +38,25 @@ namespace API.Controllers
         public async Task<ActionResult<SimplifiedUserDTO>> GetUserByUserName(string username)
         {
             return await _userRepository.GetSimplifiedUserAsync(username);
+        }
+
+        [HttpPut("{username}")]
+        public async Task<ActionResult> UpdateUser(StaffUpdateDTO staffUpdateDto, string username){
+            
+
+            var user = await _userRepository.GetUserByUsernameAsync(username);
+            System.Console.WriteLine(user.Address);
+            user.Address = staffUpdateDto.Address;
+            user.Gender = staffUpdateDto.Gender;
+            user.IsAdmin = staffUpdateDto.IsAdmin;
+            
+            _userRepository.Update(user);
+
+            if(await _userRepository.SaveAllAsync()) return NoContent();
+
+            return BadRequest("Failed to update user");
 
         }
+
     } 
 }

@@ -14,8 +14,6 @@ export class AccountService {
   currentUser$ = this.currentUserSource.asObservable();
 
 
-
-
   constructor(private http: HttpClient) { }
 
   login(model: any){

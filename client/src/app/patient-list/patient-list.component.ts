@@ -10,14 +10,14 @@ import { StaffService } from '../_services/staff.service';
   styleUrls: ['./patient-list.component.css']
 })
 export class PatientListComponent implements OnInit {
-
-  patients: Patient[];
+  singlePatient: Patient;
+  patients: Patient[] =[];
+  patNumList: string[] = [];
   user: Staff;
   constructor(private patientsService: PatientService, private staffService : StaffService) { }
 
   ngOnInit(): void {
     this.getPatientsInPatientList();
-    this.getPatients();
   }
 
   getPatients(){
@@ -25,18 +25,29 @@ export class PatientListComponent implements OnInit {
       this.patients = patients;
     })
   }
+
   getPatientsInPatientList(){
+    //get this staff members patients
+
     let user = JSON.parse(localStorage.getItem("user"));
 
     this.staffService.getOneStaffUser(user["username"]).subscribe(user =>{
-      this.user = user
+      this.user = user;
+      for(let i = 0; i < user.patientList.length; i++){
 
-    })
+        if(user.patientList[i] !== ","){
+          this.patNumList.push(user.patientList[i]);
+        }
+      }
 
-
-    this.patientsService.getPatients().subscribe(patients =>{
-      this.patients = patients;
-    })
+      for(let i = 0; i < this.patNumList.length; i++){
+        this.patientsService.getPatientById(parseInt(this.patNumList[i])).subscribe(patient =>{
+          this.singlePatient = patient;
+          console.log(this.singlePatient.id);
+          this.patients.push(this.singlePatient);
+          console.log(this.patients)
+        });
+      }
+    });
   }
-
 }

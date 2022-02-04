@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.Interfaces;
 using AutoMapper;
-
+using API.DTOs;
 namespace API.Controllers
 {
     [Authorize]
@@ -42,6 +42,12 @@ namespace API.Controllers
 
         }
 
+        [HttpPost("registerpatient")]
+        public async Task<ActionResult<string>> RegisterPatient(Patient patient){
+
+            return await _patientRepository.RegisterPatient(patient);
+            
+        }
 
 
     }

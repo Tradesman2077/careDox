@@ -2,8 +2,7 @@
     <div class="col-8" style="float:none;margin:auto;">
         <div class="card">
             <h5 class="p-2">Your Profile</h5>
-            <img src="{{staff.photoUrl || 'assets/male_carer.jpg'}}" alt="{{staff.fullname}}"
-             class="card-img-top img-thumbnail" >
+            <!--<img src="{{staff.photoUrl || 'assets/male_carer.jpg'}}" alt="{{staff.fullname}}"-->
             <div class="card-body">
                 <div>
                     <strong>Name:</strong>
@@ -25,10 +24,9 @@
             </div>
             <div class="card-footer">
                 <div class="btn-group d-flex">
-                    <button class="btn btn-primary">Edit</button>
+                    <button class="btn btn-primary" routerLink="/profiles/edit">Edit</button>
                     <button class="btn btn-secondary" routerLink="/">Back</button>
                 </div>
             </div>
-        </div>
     </div>
 </div>

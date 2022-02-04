@@ -1,0 +1,57 @@
+
+
+<div class="row"  *ngIf="staff">
+    <div class="alert alert-info" *ngIf="editForm.dirty">
+        <strong> Information: </strong> You have made changes. Any unsaved changes will be lost
+</div>
+
+
+<div class="col8" >
+    <div class="row">
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary mb-2" id="dropdownBasic1" ngbDropdownToggle>Select Staff Member</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <div *ngFor="let staff of staffList">
+                    <button ngbDropdownItem  (click)="updateStaffToEdit(staff)">{{staff.fullName}}</button>
+                </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="card">
+            <h5 class="pl-3 pt-3">Profile</h5>
+            <!--<img style="height: 85%; width: 85%; margin: 15px;" src="{{staff.photoUrl || 'assets/male_carer.jpg'}}" alt="{{staff.fullname}}" 
+                 class="card-img-top img-thumbnail" >-->
+            <div class="card-body">
+            <form id="editForm" #editForm ="ngForm" (ngSubmit) = "updateStaff()">
+                <div>
+                    <strong>Name:</strong>
+                    <p>{{staff.fullName}}</p>
+                </div>
+                <textarea class="form-control" [(ngModel)]="staff.fullName" name="name" rows="1"></textarea>
+                <div>
+                    <strong>Details:</strong>
+                    <p>{{staff.address}}</p>
+                </div>
+                <textarea class="form-control" [(ngModel)]="staff.address" name="address" rows="1"></textarea>
+                <div>
+                    <strong>Age:</strong>
+                    <p>{{staff.age}}</p>
+                </div>
+                <textarea class="form-control" [(ngModel)]="staff.age" name="age" rows="1"></textarea>
+                <div>
+                    <button class="btn btn-primary mt-3" routerLink='/patientListEdit/{{staff.username}}'>Edit Patients</button>
+                </div>
+                
+            </form>
+            </div>
+                <div class="card-footer">
+                    <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-primary btn-block">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-8" style="float:none;margin:auto;"> 
+</div>

@@ -20,6 +20,12 @@ import { PatientListComponent } from './patient-list/patient-list.component';
 import { PatientCardComponent } from './patient-card/patient-card.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
+import { AdminComponent } from './admin/admin.component';
+import { StaffEditComponent } from './staff-edit/staff-edit.component';
+import { RegisterPatientComponent } from './register-patient/register-patient.component';
+import { NgxSpinner, NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './_interceptors/loading.interceptor';
+import { PatientListEditComponent } from './patient-list-edit/patient-list-edit.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,11 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
     ServerErrorComponent,
     PatientListComponent,
     PatientCardComponent,
-    PatientDetailsComponent
+    PatientDetailsComponent,
+    AdminComponent,
+    StaffEditComponent,
+    RegisterPatientComponent,
+    PatientListEditComponent
     
   ],
   imports: [
@@ -44,11 +54,13 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
     BrowserAnimationsModule,
     FormsModule,
     NgbModule,
-    SharedModule
+    SharedModule,
+    NgxSpinnerModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi:true},
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi:true}
   ],
   bootstrap: [AppComponent]
 })

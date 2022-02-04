@@ -31,7 +31,6 @@ export class PatientDetailsComponent implements OnInit {
   loadCarePlan(careplanId : number){
     this.careplanService.getPatientById(careplanId).subscribe(careplan=>{
       this.plan = careplan;
-
     })
   }
 

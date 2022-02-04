@@ -13,5 +13,6 @@ namespace API.Interfaces
         Task<IEnumerable<Patient>> GetUsersAsync();
         Task<Patient> GetUserByIdAsync(int id);
         Task<Patient> GetUserByUsernameAsync(string username);
+        Task<string> RegisterPatient(Patient patient);
     }
 }

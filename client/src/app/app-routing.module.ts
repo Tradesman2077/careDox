@@ -1,29 +1,36 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './Errors/not-found/not-found.component';
 import { TestErrorsComponent } from './Errors/test-errors/test-errors.component';
 import { HomeComponent } from './home/home.component';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
+import { PatientListEditComponent } from './patient-list-edit/patient-list-edit.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { ServerErrorComponent } from './server-error/server-error.component';
+import { StaffEditComponent } from './staff-edit/staff-edit.component';
 import { MessagesComponent } from './staff/messages/messages.component';
 import { ProfileComponent } from './staff/profile/profile.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 
 const routes: Routes = [
 
   {
-    path: '',
+    path: '', 
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
       {path: '', component: HomeComponent},
       {path: 'profile/:username',  component: ProfileComponent},
+      {path: 'profiles/edit',  component: StaffEditComponent, canDeactivate: [PreventUnsavedChangesGuard]},
       {path: 'patients',  component: PatientListComponent},
       {path: 'messages',  component: MessagesComponent},
       {path: 'not-found', component: NotFoundComponent},
+      {path: 'admin', component: AdminComponent}, 
       {path: 'server-error', component: ServerErrorComponent},
-      {path:'patients/:id', component: PatientDetailsComponent}
+      {path:'patients/:id', component: PatientDetailsComponent},
+      {path: 'patientListEdit/:username', component: PatientListEditComponent}
     ]
   },
   {path:'errors', component: TestErrorsComponent},
