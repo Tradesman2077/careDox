@@ -51,8 +51,8 @@ export class PatientListEditComponent implements OnInit {
   }
   updateStaff(){ 
     this.staffService.updateStaff(this.staff, this.route.snapshot.paramMap.get('username')).subscribe(() =>{
-      
-      this.toaster.success("Profile updated successfully");
+
+      this.toaster.success("Patient Removed");
 
     });
     
