@@ -20,6 +20,7 @@ namespace API.Entities
         public string Gender { get; set; }
         public bool IsAdmin {get; set; }
         public string Address { get; set; }
+        public string ContactNumber {get; set;}
         public ICollection<Photo> Photos { get; set; }
         public ICollection<Patient> Patients {get; set;}
 

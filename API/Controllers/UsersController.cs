@@ -10,6 +10,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace API.Controllers
 {
@@ -41,14 +42,14 @@ namespace API.Controllers
         }
 
         [HttpPut("{username}")]
-        public async Task<ActionResult> UpdateUser(StaffUpdateDTO staffUpdateDto, string username){
-            
+        public async Task<ActionResult> UpdateUser(StaffUpdateDTO staffUpdateDto){
 
-            var user = await _userRepository.GetUserByUsernameAsync(username);
-            System.Console.WriteLine(user.Address);
+            var user = await _userRepository.GetUserByUsernameAsync(staffUpdateDto.UserName);
             user.Address = staffUpdateDto.Address;
             user.Gender = staffUpdateDto.Gender;
             user.IsAdmin = staffUpdateDto.IsAdmin;
+            user.ContactNumber = staffUpdateDto.ContactNumber;
+            user.PatientList = staffUpdateDto.PatientList;
             
             _userRepository.Update(user);
 

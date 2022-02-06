@@ -14,7 +14,6 @@ namespace API.Data
         }
 
         public DbSet<StaffUser> Users{get; set;}
-
         public DbSet<Patient> Patients{get; set;}
         public DbSet<CarePlan> CarePlans{get; set;}
         

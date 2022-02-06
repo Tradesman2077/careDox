@@ -21,6 +21,7 @@ export class StaffService {
 
   baseUrl = environment.apiUrl; 
   staff: Staff[] = [];
+  staffMember: Staff;
 
 
   constructor(private http: HttpClient) {
@@ -40,7 +41,14 @@ export class StaffService {
   getOneStaffUser(username: string){
     return this.http.get<Staff>(this.baseUrl + 'users/' + username, httpOptions);
   }
+
+  getOneStaffUserMapped(username: string){
+    return this.http.get<Staff>(this.baseUrl + 'users/' + username);
+  }
+
+
   updateStaff(staff : Staff, username : string){
+    console.log(staff.patientList);
     return this.http.put(this.baseUrl + 'users/' + username, staff, httpOptions);
   }
 

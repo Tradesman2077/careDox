@@ -16,6 +16,8 @@ export class PatientListEditComponent implements OnInit {
   patients: Patient[] =[];
   staff: Staff;
   patNumList: string[] =[];
+  allPatients: Patient[];
+  
 
 
   constructor(private staffService : StaffService, private route: ActivatedRoute,
@@ -23,23 +25,34 @@ export class PatientListEditComponent implements OnInit {
      private toaster: ToastrService) { }
 
   ngOnInit(): void {
-    this.loadStaffMember();
+    this.loadStaffMemberAndPatients();
+    this.getAllPatients();
   }
-
-  loadStaffMember(){
-    this.staffService.getOneStaffUser(this.route.snapshot.paramMap.get('username')).subscribe(staff =>{
-      this.staff = staff;
-      console.log(this.staff);
+  getAllPatients(){
+    this.patientsService.getPatients().subscribe(pats =>{
+      this.allPatients = pats;
+    })
+  }
+  loadStaffMemberAndPatients()
+  {
+    this.staffService.getOneStaffUser(this.route.snapshot.paramMap.get('username')).subscribe(user =>{
+      this.staff = user;
       this.getPatientsInPatientList();
     })
   }
-
-  getPatientsInPatientList(){
+  loadStaffMemberAndRemovePatient(patientId)
+  {
+    this.staffService.getOneStaffUser(this.route.snapshot.paramMap.get('username')).subscribe(user =>{
+      this.staff = user;
+      this.removePatient(patientId);
+    })
+  }
+  getPatientsInPatientList()
+  {
     //get this staff members patients
     for(let i = 0; i < this.staff.patientList.length; i++){
       if(this.staff.patientList[i] !== ","){
         this.patNumList.push(this.staff.patientList[i]);
-
       }
     }
     for(let i = 0; i < this.patNumList.length; i++){
@@ -49,18 +62,45 @@ export class PatientListEditComponent implements OnInit {
       });
     }
   }
-  updateStaff(){ 
-    this.staffService.updateStaff(this.staff, this.route.snapshot.paramMap.get('username')).subscribe(() =>{
-
-      this.toaster.success("Patient Removed");
-
-    });
+  removePatient(patientId)
+  { 
+    if(window.confirm('Are you sure you want to delete this patient?')){
+      let arr = this.staff.patientList.split(",");
+    let id = patientId.toString();
+    if (arr.includes(id)){
+      let index = arr.indexOf(id);
+      arr.splice(index, 1);
+      let list = "";
+      arr.forEach(element => {
+        list+=element+",";
+      });
+      this.staff.patientList = list;
+      this.staffService.updateStaff(this.staff, this.staff.username).subscribe(() =>{
+        window.location.reload();
+      }); 
+    }
+    }
     
   }
-
-
-
-
+  addPatient(patientId)
+  {
+    if(this.staff.patientList.includes(patientId)){
+      this.toaster.warning('Patient already allocated to this staff member');
+    }
+    else{
+      this.staff.patientList = this.staff.patientList.concat(patientId + ",");
+    this.staffService.updateStaff(this.staff, this.staff.username).subscribe(() =>{
+      window.location.reload();
+      }); 
+    }
+  }
+  loadStaffAddPatient(patientId)
+  {
+    this.staffService.getOneStaffUser(this.route.snapshot.paramMap.get('username')).subscribe(user =>{
+      this.staff = user;
+      this.addPatient(patientId);
+    })
+  }
 }
 
 

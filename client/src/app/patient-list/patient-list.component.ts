@@ -43,9 +43,7 @@ export class PatientListComponent implements OnInit {
       for(let i = 0; i < this.patNumList.length; i++){
         this.patientsService.getPatientById(parseInt(this.patNumList[i])).subscribe(patient =>{
           this.singlePatient = patient;
-          console.log(this.singlePatient.id);
           this.patients.push(this.singlePatient);
-          console.log(this.patients)
         });
       }
     });

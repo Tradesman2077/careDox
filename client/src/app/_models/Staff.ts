@@ -14,4 +14,5 @@ export interface Staff {
     address:     string;
     photos:      Photo[];
     patients:    any[];
+    contactNumber: string;
 }

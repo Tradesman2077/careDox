@@ -11,6 +11,10 @@ namespace API.DTOs
         public string Name { get; set; }
         public string Gender { get; set; }
         public bool IsAdmin { get; set; }
+        public string UserName { get; set; }
+        public string PatientList { get; set; }
+
+        public string ContactNumber{get; set;}
         
     }
 }
