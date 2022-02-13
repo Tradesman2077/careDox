@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let patient of allPatients; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            <i class="fa fa-user mr-2"></i>
+            {{patient.id }}
+          </td>
+          <td>{{patient.name}}</td>
+          <td>{{patient.address}}</td>
+          <td><button class="btn btn-secondary m-1" (click)="removePatient(patient.id)">Remove</button>
+            <button class="btn btn-primary" (click)="editPatient(patient.id)">Edit</button>
+        </td>
+          
+        </tr>
+      </tbody>
+  </table>

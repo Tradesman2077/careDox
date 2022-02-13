@@ -1,0 +1,22 @@
+<form  (ngSubmit) = "update()" autocomplete="off">
+    <div class="text-center text-primary">Enter staff user details</div>
+    <hr>
+
+    <div class="form-group">
+        <input  type="text" class="form-control" name= "fullName" [(ngModel)]="profile.fullName" placeholder="Full Name">
+    </div>
+    <div class="form-group">
+        <input  type="text" class="form-control" name= "gender" [(ngModel)]="profile.gender" placeholder="Gender">
+    </div>
+    <div class="form-group">
+        <input  type="text" class="form-control" name= "contactNumber" [(ngModel)]="profile.contactNumber" placeholder="Contact Number">
+    </div>
+    <div class="form-group">
+        <input  type="text" class="form-control" name= "address" [(ngModel)]="profile.address" placeholder="Address">
+    </div>
+
+
+    <div class="form-group text-center">
+        <button class="btn btn-success mr-2" type="submit">Register user</button>
+    </div> 
+</form>

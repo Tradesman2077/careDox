@@ -26,14 +26,11 @@ namespace API.Controllers
 
 
         [HttpGet]
-        [AllowAnonymous]
+
         public async Task<ActionResult<IEnumerable<Patient>>> GetPatients()
         {
             return await _context.Patients.ToListAsync();
         }
-
-
-        
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Patient>> GetPatientByUserName(int id)
@@ -49,6 +46,15 @@ namespace API.Controllers
             
         }
 
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeletePatient(int id){
+
+                var patient = await _patientRepository.GetUserByIdAsync(id);
+                _patientRepository.DeletePatient(patient);
+                await _patientRepository.SaveAllAsync();
+            
+                return Ok();
+        }
 
     }
 }

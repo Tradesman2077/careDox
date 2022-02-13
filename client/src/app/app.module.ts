@@ -26,6 +26,8 @@ import { RegisterPatientComponent } from './register-patient/register-patient.co
 import { NgxSpinner, NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { PatientListEditComponent } from './patient-list-edit/patient-list-edit.component';
+import { RegisterStaffdetailsComponent } from './register/register-staffdetails/register-staffdetails.component';
+import { PatientAddRemoveEditComponent } from './patient-add-remove-edit/patient-add-remove-edit.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { PatientListEditComponent } from './patient-list-edit/patient-list-edit.
     AdminComponent,
     StaffEditComponent,
     RegisterPatientComponent,
-    PatientListEditComponent
+    PatientListEditComponent,
+    RegisterStaffdetailsComponent,
+    PatientAddRemoveEditComponent
     
   ],
   imports: [

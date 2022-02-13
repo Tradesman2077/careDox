@@ -14,5 +14,6 @@ namespace API.Interfaces
         Task<Patient> GetUserByIdAsync(int id);
         Task<Patient> GetUserByUsernameAsync(string username);
         Task<string> RegisterPatient(Patient patient);
+        void DeletePatient(Patient patient);
     }
 }

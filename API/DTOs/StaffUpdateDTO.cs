@@ -8,7 +8,7 @@ namespace API.DTOs
     public class StaffUpdateDTO
     {
         public string Address { get; set; }
-        public string Name { get; set; }
+        public string FullName { get; set; }
         public string Gender { get; set; }
         public bool IsAdmin { get; set; }
         public string UserName { get; set; }

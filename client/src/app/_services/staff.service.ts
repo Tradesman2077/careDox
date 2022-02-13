@@ -48,7 +48,6 @@ export class StaffService {
 
 
   updateStaff(staff : Staff, username : string){
-    console.log(staff.patientList);
     return this.http.put(this.baseUrl + 'users/' + username, staff, httpOptions);
   }
 

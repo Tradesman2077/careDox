@@ -42,4 +42,8 @@ export class PatientService {
     return this.http.post(this.baseUrl + 'registerpatient', model);
     
   }
+  removePatient(id: number){
+    
+    return this.http.delete(this.baseUrl + 'patients/'+ id);
+  }
 }

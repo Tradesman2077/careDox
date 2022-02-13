@@ -20,6 +20,7 @@ namespace API.Data
 
         public async Task<Patient> GetUserByIdAsync(int id)
         {
+            
             return await _context.Patients.FindAsync(id);
         }
 
@@ -47,14 +48,20 @@ namespace API.Data
             
         }
 
-        public Task<bool> SaveAllAsync()
+        public async Task<bool> SaveAllAsync()
         {
-            throw new NotImplementedException();
+            return await _context.SaveChangesAsync() > 0;
         }
 
         public void Update(Patient user)
         {
             throw new NotImplementedException();
+        }
+
+        public void DeletePatient(Patient patient)
+        {
+            _context.Remove(patient);
+            _context.SaveChanges();
         }
     }
 }

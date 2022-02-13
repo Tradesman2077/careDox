@@ -40,14 +40,17 @@ namespace API.Controllers
         {
             return await _userRepository.GetSimplifiedUserAsync(username);
         }
+        
 
         [HttpPut("{username}")]
         public async Task<ActionResult> UpdateUser(StaffUpdateDTO staffUpdateDto){
 
             var user = await _userRepository.GetUserByUsernameAsync(staffUpdateDto.UserName);
+            System.Console.WriteLine(user.UserName);
+
+            user.FullName = staffUpdateDto.FullName;
             user.Address = staffUpdateDto.Address;
             user.Gender = staffUpdateDto.Gender;
-            user.IsAdmin = staffUpdateDto.IsAdmin;
             user.ContactNumber = staffUpdateDto.ContactNumber;
             user.PatientList = staffUpdateDto.PatientList;
             

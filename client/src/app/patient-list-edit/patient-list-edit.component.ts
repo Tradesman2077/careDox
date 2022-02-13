@@ -50,11 +50,14 @@ export class PatientListEditComponent implements OnInit {
   getPatientsInPatientList()
   {
     //get this staff members patients
+ 
+    
     for(let i = 0; i < this.staff.patientList.length; i++){
       if(this.staff.patientList[i] !== ","){
         this.patNumList.push(this.staff.patientList[i]);
       }
     }
+    console.log(this.patNumList);
     for(let i = 0; i < this.patNumList.length; i++){
         this.patientsService.getPatientById(parseInt(this.patNumList[i])).subscribe(patient =>{
           this.singlePatient = patient;
@@ -66,19 +69,22 @@ export class PatientListEditComponent implements OnInit {
   { 
     if(window.confirm('Are you sure you want to delete this patient?')){
       let arr = this.staff.patientList.split(",");
-    let id = patientId.toString();
-    if (arr.includes(id)){
-      let index = arr.indexOf(id);
-      arr.splice(index, 1);
-      let list = "";
-      arr.forEach(element => {
-        list+=element+",";
-      });
-      this.staff.patientList = list;
-      this.staffService.updateStaff(this.staff, this.staff.username).subscribe(() =>{
-        window.location.reload();
-      }); 
-    }
+      let id = patientId.toString();
+      if (arr.includes(id)){
+        let index = arr.indexOf(id);
+        arr.splice(index, 1);
+        let list = [];
+      
+        for(let i =0; i < arr.length; i++){
+          list.push(arr[i]);
+          //list.push(',');
+        }
+        this.staff.patientList = list.toString();
+        console.log(list.toString());
+        this.staffService.updateStaff(this.staff, this.staff.username).subscribe(() =>{
+          window.location.reload();
+          }); 
+        }
     }
     
   }

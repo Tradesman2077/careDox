@@ -4,9 +4,13 @@ import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './Errors/not-found/not-found.component';
 import { TestErrorsComponent } from './Errors/test-errors/test-errors.component';
 import { HomeComponent } from './home/home.component';
+import { PatientAddRemoveEditComponent } from './patient-add-remove-edit/patient-add-remove-edit.component';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
 import { PatientListEditComponent } from './patient-list-edit/patient-list-edit.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
+import { RegisterPatientComponent } from './register-patient/register-patient.component';
+import { RegisterStaffdetailsComponent } from './register/register-staffdetails/register-staffdetails.component';
+import { RegisterComponent } from './register/register.component';
 import { ServerErrorComponent } from './server-error/server-error.component';
 import { StaffEditComponent } from './staff-edit/staff-edit.component';
 import { MessagesComponent } from './staff/messages/messages.component';
@@ -24,6 +28,9 @@ const routes: Routes = [
       {path: '', component: HomeComponent},
       {path: 'profile/:username',  component: ProfileComponent},
       {path: 'profiles/edit',  component: StaffEditComponent, canDeactivate: [PreventUnsavedChangesGuard]},
+      {path: 'admin/register', component: RegisterComponent},
+      {path: 'admin/patientEdit', component: PatientAddRemoveEditComponent},
+      {path: 'admin/register/registerDetails/:username', component:RegisterStaffdetailsComponent},
       {path: 'patients',  component: PatientListComponent},
       {path: 'messages',  component: MessagesComponent},
       {path: 'not-found', component: NotFoundComponent},
