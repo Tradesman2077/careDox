@@ -39,7 +39,7 @@ namespace API.Controllers
 
         }
 
-        [HttpPost("registerpatient")]
+        [HttpPost("registerPatient")]
         public async Task<ActionResult<string>> RegisterPatient(Patient patient){
 
             return await _patientRepository.RegisterPatient(patient);
@@ -54,6 +54,22 @@ namespace API.Controllers
                 await _patientRepository.SaveAllAsync();
             
                 return Ok();
+        }
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateUser(PatientDTO patientDto){
+            
+            System.Console.WriteLine(patientDto.Id);
+            var patient = await _patientRepository.GetUserByIdAsync(patientDto.Id);
+            patient.KnownAs = patientDto.KnownAs;
+            patient.Name = patientDto.Name;
+            patient.Address = patientDto.Address;
+            patient.Gender = patientDto.Gender;          
+            _patientRepository.Update(patient);
+
+            if(await _patientRepository.SaveAllAsync()) return NoContent();
+
+            return BadRequest("Failed to update patient");
+
         }
 
     }

@@ -6,60 +6,60 @@
              class="card-img-top img-thumbnail">-->
             <div class="card-body">
                 <div>
-                    <strong>Name:</strong>
+                    <strong class="font-weight-bold">Name:</strong>
                     <p>{{patient?.name}}</p>
                 </div>
                 <div>
-                    <strong>Address:</strong>
-                    <p>{{patient.address}}</p>
+                    <strong class="font-weight-bold">Address:</strong>
+                    <p class="font-weight-light">{{patient.address}}</p>
                 </div>
                 <div>
-                    <strong>Date of Birth:</strong>
-                    <p>{{patient.dateOfBirth}}</p>
+                    <strong class="font-weight-bold">Date of Birth:</strong>
+                    <p class="font-weight-light">{{patient.dateOfBirth}}</p>
                 </div>
                 <div>
-                    <strong>
+                    <strong class="font-weight-bold">
                         Gender:</strong>
-                    <p>{{patient.gender}}</p>
+                    <p class="font-weight-light">{{patient.gender}}</p>
                 </div>
                 <div>
                     <ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
                         <ngb-panel id="static-1" title="Care Plan" class="text">
                           <ng-template ngbPanelContent>
-                            <strong>
+                            <strong class="font-weight-bold">
                                 Level Of Understanding:</strong>
                             <p>{{plan.levelOfUnderstanding}}</p>
-                            <strong>
+                            <strong class="font-weight-bold">
                                 Communication:</strong>
                             <p>{{plan.communication}}</p>
-                            <strong>
+                            <strong class="font-weight-bold">
                                 Mobility:</strong>
                             <p>{{plan.mobility}}</p>
-                            <strong>
+                            <strong class="font-weight-bold">
                                 Personal Care:</strong>
-                            <p>{{plan.personalCare}}</p>
-                            <strong>
+                            <p >{{plan.personalCare}}</p>
+                            <strong class="font-weight-bold">
                                 Continence Care:</strong>
-                            <p>{{plan.continenceCare}}</p>
-                            <strong>
+                            <p >{{plan.continenceCare}}</p>
+                            <strong class="font-weight-bold">
                                 Oral Care:</strong>
-                            <p>{{plan.oralCare}}</p>
-                            <strong>
+                            <p >{{plan.oralCare}}</p>
+                            <strong class="font-weight-bold">
                                 Nutrician and Dehydration:</strong>
-                            <p>{{plan.nutritionAndHydration}}</p>
-                            <strong>
+                            <p >{{plan.nutritionAndHydration}}</p>
+                            <strong class="font-weight-bold">
                                 Skin Care:</strong>
-                            <p>{{plan.skinCare}}</p>
-                            <strong>
+                            <p >{{plan.skinCare}}</p>
+                            <strong class="font-weight-bold">
                                 Interests and Hobbies:</strong>
-                            <p>{{plan.interestsAndHobbies}}</p>
-                            <strong>
+                            <p >{{plan.interestsAndHobbies}}</p>
+                            <strong class="font-weight-bold">
                                 Mental health:</strong>
-                            <p>{{plan.mentalHealth}}</p>
-                            <strong>
+                            <p >{{plan.mentalHealth}}</p>
+                            <strong class="font-weight-bold">
                                 End Of Life preference:</strong>
-                            <p>{{plan.eolPref}}</p>
-                            <strong>
+                            <p >{{plan.eolPref}}</p>
+                            <strong class="font-weight-bold">
                                 Religious and Cultural Considerations:</strong>
                             <p>{{plan.religiousAndCulturalBeliefs}}</p>
                           </ng-template>

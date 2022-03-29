@@ -10,4 +10,6 @@ export interface Patient {
     address: string,
     fullname: string
     
+
+    
 }

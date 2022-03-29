@@ -21,9 +21,9 @@ export class RegisterPatientComponent implements OnInit {
 
   registerPatient(){
     this.patientService.registerPatient(this.model).subscribe(response =>{
-      console.log(response);
-      this.toastr.success("Patient added");
-    })
+      
+    });
+    this.toastr.success("Patient added");
   }
 
 

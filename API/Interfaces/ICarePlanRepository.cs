@@ -9,6 +9,8 @@ namespace API.Interfaces
     public interface ICarePlanRepository
     {
 
+        void Update(CarePlan carePlan);
+        Task<bool> SaveAllAsync();
         Task<CarePlan> GetPlanByIdAsync(int id);
 
     }

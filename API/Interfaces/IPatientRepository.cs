@@ -8,7 +8,7 @@ namespace API.Interfaces
 {
     public interface IPatientRepository
     {
-        void Update(Patient user);
+        void Update(Patient patient);
         Task<bool> SaveAllAsync();
         Task<IEnumerable<Patient>> GetUsersAsync();
         Task<Patient> GetUserByIdAsync(int id);

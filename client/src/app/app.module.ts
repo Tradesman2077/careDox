@@ -28,6 +28,8 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { PatientListEditComponent } from './patient-list-edit/patient-list-edit.component';
 import { RegisterStaffdetailsComponent } from './register/register-staffdetails/register-staffdetails.component';
 import { PatientAddRemoveEditComponent } from './patient-add-remove-edit/patient-add-remove-edit.component';
+import { PatientEditComponent } from './patient-edit/patient-edit.component';
+import { CarePlanEditComponent } from './care-plan-edit/care-plan-edit.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { PatientAddRemoveEditComponent } from './patient-add-remove-edit/patient
     RegisterPatientComponent,
     PatientListEditComponent,
     RegisterStaffdetailsComponent,
-    PatientAddRemoveEditComponent
+    PatientAddRemoveEditComponent,
+    PatientEditComponent,
+    CarePlanEditComponent
     
   ],
   imports: [

@@ -26,6 +26,7 @@ export class StaffEditComponent implements OnInit {
       $event.returnValue = true;
     }
   }
+  
   constructor(private accountService : AccountService, private staffService : StaffService, private toaster : ToastrService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
     

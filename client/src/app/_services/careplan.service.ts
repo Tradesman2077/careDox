@@ -8,12 +8,13 @@ import { CarePlan } from '../_models/CarePlan';
 })
 export class CareplanService {
   baseUrl = environment.apiUrl;
-
   constructor(private http: HttpClient) {
+  }
 
-   }
-
-   getPatientById(id: number){
+   getCarePlanById(id: number){
     return this.http.get<CarePlan>(this.baseUrl + 'CarePlans/' + id);
+  }
+  updateCarePlan(carePlan : CarePlan, id : number){
+    return this.http.put(this.baseUrl + 'CarePlans/' + id, carePlan);
   }
 }

@@ -1,0 +1,38 @@
+<div class="row"  *ngIf="patient">
+    <div class="alert alert-info" *ngIf="editFormPatient.dirty">
+        <strong> Information: </strong> You have made changes. Any unsaved changes will be lost
+</div>
+
+
+<div class="col8" >
+    <div class="row">
+        <div class="card">
+            <h5 class="pl-3 pt-3">Edit Patient</h5>
+            <!--<img style="height: 85%; width: 85%; margin: 15px;" src="{{staff.photoUrl || 'assets/male_carer.jpg'}}" alt="{{staff.fullname}}" 
+                 class="card-img-top img-thumbnail" >-->
+            <div class="card-body">
+            <form id="editFormPatient" #editFormPatient ="ngForm" (ngSubmit) = "updatePatient()">
+                <div>
+                    <strong>Name:</strong>
+                </div>
+                <textarea class="form-control" [(ngModel)]="patient.name" name="name" rows="1"></textarea>
+                <div>
+                    <strong>Details:</strong>
+                </div>
+                <textarea class="form-control" [(ngModel)]="patient.address" name="address" rows="1"></textarea>
+                <div>
+                    <strong>Known As:</strong>
+                </div>
+                <textarea class="form-control" [(ngModel)]="patient.knownAs" name="contactNumber" rows="1"></textarea>
+            </form>
+            </div>
+                <div class="card-footer">
+                    <button class="btn btn-info btn-block" routerLink="carePlan">Edit Care Plan</button>
+                    <button [disabled]="!editFormPatient.dirty" form="editFormPatient" class="btn btn-primary btn-block">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-8" style="float:none;margin:auto;"> 
+</div>

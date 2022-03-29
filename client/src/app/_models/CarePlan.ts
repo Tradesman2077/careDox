@@ -8,7 +8,7 @@ export interface CarePlan{
     personalCare: string,
     continenceCare: string,
     oralCare: string,
-    nutricianAndDehydration : string,
+    nutritionAndDehydration : string,
     skinCare: string,
     interestsAndHobbies: string,
     mentalHealth: string,
@@ -16,6 +16,4 @@ export interface CarePlan{
     eolPref: string,
     religiousAndCulturalBeliefs: string,
     patientId : number
-    
-        
 }

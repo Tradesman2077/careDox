@@ -29,6 +29,7 @@ export class PatientAddRemoveEditComponent implements OnInit {
     })
   }
   removePatient(id){
+    if(window.confirm('Are you sure you want to delete this patient from the system?')){
     this.patientsService.removePatient(id).subscribe();
 
     this.staffService.getStaff().subscribe(staff =>{
@@ -45,7 +46,7 @@ export class PatientAddRemoveEditComponent implements OnInit {
               arr2.push(arr[k]);
               arr2.push(',');
             }
-              //update staff
+            //update staff
             this.allStaff[i].patientList = arr2.toString();
             this.updateStaff(this.allStaff[i], this.allStaff[i].username);
             }
@@ -55,6 +56,7 @@ export class PatientAddRemoveEditComponent implements OnInit {
       window.location.reload();
     
   }
+}
   updateStaff(staff: Staff, username : string){ 
     this.staffService.updateStaff(staff, username).subscribe(() =>{
       this.toaster.success(`Patient removed from ${username} patient list`);

@@ -14,11 +14,7 @@ export class PatientService {
   baseUrl = environment.apiUrl;
 
   patients: Patient[] = [];
-
-
-
   constructor(private http: HttpClient) {
-    
    }
    getPatients() {
      if(this.patients.length > 0) return of(this.patients);
@@ -29,7 +25,6 @@ export class PatientService {
       })
     )
   }
-
   getPatientById(id: number){
     const patient = this.patients.find(x => x.id === id);
     if(patient !== undefined){
@@ -37,13 +32,14 @@ export class PatientService {
     }
     return this.http.get<Patient>(this.baseUrl + 'patients/' + id);
   }
-
   registerPatient(model: any){
-    return this.http.post(this.baseUrl + 'registerpatient', model);
     
+    return this.http.post(this.baseUrl +'patients/' + 'registerPatient', model);
   }
   removePatient(id: number){
-    
     return this.http.delete(this.baseUrl + 'patients/'+ id);
+  }
+  updatePatient(patient : Patient, id : number){
+    return this.http.put(this.baseUrl + 'patients/' + id, patient);
   }
 }

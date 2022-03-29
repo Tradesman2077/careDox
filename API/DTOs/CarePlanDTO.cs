@@ -9,6 +9,7 @@ namespace API.DTOs
     public class CarePlanDTO
     {
         public int PatientId { get; set; }
+        public int Id { get; set; }
 
         public string LevelOfUnderstanding { get; set; }
 

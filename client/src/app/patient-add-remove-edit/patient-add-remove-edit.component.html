@@ -18,7 +18,7 @@
           <td>{{patient.name}}</td>
           <td>{{patient.address}}</td>
           <td><button class="btn btn-secondary m-1" (click)="removePatient(patient.id)">Remove</button>
-            <button class="btn btn-primary" (click)="editPatient(patient.id)">Edit</button>
+            <button class="btn btn-primary" routerLink="/admin/patientEdit/editForm/{{patient.id}}">Edit</button>
         </td>
           
         </tr>

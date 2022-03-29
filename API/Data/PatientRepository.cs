@@ -6,6 +6,7 @@ using API.Entities;
 using API.Interfaces;
 using AutoMapper;
 using API.DTOs;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
@@ -36,16 +37,13 @@ namespace API.Data
 
         public async Task<string> RegisterPatient(Patient patient)
         {
-
             _context.Add(patient);
             if(await _context.SaveChangesAsync() > 0){
-                return "Patient Added";
+                return "";
             }
             else{
                 return "Something went wrong";
             }
-            
-            
         }
 
         public async Task<bool> SaveAllAsync()
@@ -53,9 +51,9 @@ namespace API.Data
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public void Update(Patient user)
+        public void Update(Patient patient)
         {
-            throw new NotImplementedException();
+            _context.Entry(patient).State = EntityState.Modified;
         }
 
         public void DeletePatient(Patient patient)

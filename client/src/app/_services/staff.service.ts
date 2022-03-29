@@ -11,11 +11,9 @@ const httpOptions = {
     Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('user'))?.token
   })
 }
-
 @Injectable({
   providedIn: 'root'
 })
-
 
 export class StaffService {
 
@@ -23,11 +21,8 @@ export class StaffService {
   staff: Staff[] = [];
   staffMember: Staff;
 
-
   constructor(private http: HttpClient) {
-
    }
-
   getStaff() {
     if(this.staff.length > 0) return of(this.staff);
     return this.http.get<Staff[]>(this.baseUrl + 'users').pipe(
@@ -37,19 +32,13 @@ export class StaffService {
       })
     );
   }
-
   getOneStaffUser(username: string){
     return this.http.get<Staff>(this.baseUrl + 'users/' + username, httpOptions);
   }
-
   getOneStaffUserMapped(username: string){
     return this.http.get<Staff>(this.baseUrl + 'users/' + username);
   }
-
-
   updateStaff(staff : Staff, username : string){
     return this.http.put(this.baseUrl + 'users/' + username, staff, httpOptions);
   }
-
-  
 }

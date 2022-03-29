@@ -1,11 +1,13 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
+import { CarePlanEditComponent } from './care-plan-edit/care-plan-edit.component';
 import { NotFoundComponent } from './Errors/not-found/not-found.component';
 import { TestErrorsComponent } from './Errors/test-errors/test-errors.component';
 import { HomeComponent } from './home/home.component';
 import { PatientAddRemoveEditComponent } from './patient-add-remove-edit/patient-add-remove-edit.component';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
+import { PatientEditComponent } from './patient-edit/patient-edit.component';
 import { PatientListEditComponent } from './patient-list-edit/patient-list-edit.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
@@ -30,6 +32,9 @@ const routes: Routes = [
       {path: 'profiles/edit',  component: StaffEditComponent, canDeactivate: [PreventUnsavedChangesGuard]},
       {path: 'admin/register', component: RegisterComponent},
       {path: 'admin/patientEdit', component: PatientAddRemoveEditComponent},
+      {path: 'admin/patientEdit/editForm/:id', component: PatientEditComponent},
+      {path: 'admin/patientEdit/editForm/:id/carePlan', component: CarePlanEditComponent},
+      {path: 'admin/patientRegister', component: RegisterPatientComponent}, 
       {path: 'admin/register/registerDetails/:username', component:RegisterStaffdetailsComponent},
       {path: 'patients',  component: PatientListComponent},
       {path: 'messages',  component: MessagesComponent},
