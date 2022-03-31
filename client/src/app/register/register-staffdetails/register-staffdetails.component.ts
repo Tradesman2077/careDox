@@ -10,7 +10,7 @@ import { StaffService } from 'src/app/_services/staff.service';
 })
 export class RegisterStaffdetailsComponent implements OnInit {
 
-  constructor( private staffService: StaffService, private toastr: ToastrService,private route: ActivatedRoute,) { }
+  constructor( private staffService: StaffService, private router: Router, private toastr: ToastrService,private route: ActivatedRoute,) { }
 
   profile : any = {};
 
@@ -25,8 +25,8 @@ export class RegisterStaffdetailsComponent implements OnInit {
       this.profile.username
     )
     this.staffService.updateStaff(this.profile, this.profile.username).subscribe(() =>{
-      
       this.toastr.success("Profile added successfully");
+      this.router.navigateByUrl("/profiles/edit");
     });
   }
 

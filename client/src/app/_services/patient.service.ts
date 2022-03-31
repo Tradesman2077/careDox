@@ -17,6 +17,7 @@ export class PatientService {
   constructor(private http: HttpClient) {
    }
    getPatients() {
+      console.log("get patients");
      if(this.patients.length > 0) return of(this.patients);
     return this.http.get<Patient[]>(this.baseUrl + 'patients').pipe(
       map(patients => {

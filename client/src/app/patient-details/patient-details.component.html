@@ -11,16 +11,16 @@
                 </div>
                 <div>
                     <strong class="font-weight-bold">Address:</strong>
-                    <p class="font-weight-light">{{patient.address}}</p>
+                    <p class="font-weight-light">{{patient?.address}}</p>
                 </div>
                 <div>
                     <strong class="font-weight-bold">Date of Birth:</strong>
-                    <p class="font-weight-light">{{patient.dateOfBirth}}</p>
+                    <p class="font-weight-light">{{patient?.dateOfBirth}}</p>
                 </div>
                 <div>
                     <strong class="font-weight-bold">
                         Gender:</strong>
-                    <p class="font-weight-light">{{patient.gender}}</p>
+                    <p class="font-weight-light">{{patient?.gender}}</p>
                 </div>
                 <div>
                     <ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
@@ -69,13 +69,14 @@
                               {{plan.medication}}
                             </ng-template>
                           </ngb-panel>
-                    </ngb-accordion>    
+                    </ngb-accordion>
+                    <input class="form-control form-control-lg mt-1" id="details" type="text" placeholder="Appointment details, how did it go?"[(ngModel)]="appDetails">    
                 </div>
 
             </div>
             <div class="card-footer">
                 <div class="btn-group d-flex">
-                    <button class="btn btn-primary">Mark as completed</button>
+                    <button class="btn btn-primary" (click)="markAsCompleted()">Mark as completed</button>
                     <button class="btn btn-secondary" routerLink="/">Back</button>
                 </div>
             </div>

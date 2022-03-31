@@ -37,6 +37,10 @@ export class AccountService {
       })
     )
   }
+  registerStaff(model: any){
+    return this.http.post(this.baseUrl + 'account/register', model);
+    
+  }
 
 
   setCurrentUser(user : User) {

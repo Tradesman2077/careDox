@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   register(){
     this.model.username = this.model.username.toLowerCase();
     this.model.username = this.model.username.replace(/ /g, '');
-    this.accountService.register(this.model).subscribe(response =>{
+    this.accountService.registerStaff(this.model).subscribe(response =>{
       this.cancel();
       this.router.navigateByUrl('admin/register/registerDetails/'+this.model.username);
     }, error =>{
