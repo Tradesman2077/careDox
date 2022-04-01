@@ -31,15 +31,8 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Appointment>> GetAppointmentById(int id)
         {
-            var today = DateTime.Now.ToString("dd/MM/yyyy");
-            var appointment = await _appointmentRepository.GetAppointmentByIdAsync(id);
-            Console.WriteLine(today + "today" + appointment.Date + "appointment");
-            if(today == appointment.Date.ToString()){
-                return appointment;
-            }
-            else{
-                return null;
-            }
+            return await _appointmentRepository.GetAppointmentByIdAsync(id);
+
         }
         [HttpPost("registerAppointment")]
         public async Task<ActionResult<string>> RegisterAppointment(Appointment appointment){

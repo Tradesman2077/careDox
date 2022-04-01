@@ -1,10 +1,12 @@
 <div class="row">
     <div class="col-10" style="float:none;margin:auto;">
         <div class="card">
-            <h5 class="pt-4 pl-3">Patient Profile</h5>
+            <h5 class="pt-4 pl-3">Patient Profile<div *ngIf="complete" style="color: rgb(0, 155, 0); display: inline;"> - Complete <i class="fa fa-check mr-2"></i></div></h5>
             <!--<img src='assets/user.jpg' alt="{{patient.fullname}}"
              class="card-img-top img-thumbnail">-->
+
             <div class="card-body">
+                
                 <div>
                     <strong class="font-weight-bold">Name:</strong>
                     <p>{{patient?.name}}</p>
@@ -70,13 +72,20 @@
                             </ng-template>
                           </ngb-panel>
                     </ngb-accordion>
-                    <input class="form-control form-control-lg mt-1" id="details" type="text" placeholder="Appointment details, how did it go?"[(ngModel)]="appDetails">    
+                    <div  *ngIf="complete"style="margin-top: 1%;">
+                        <strong class="font-weight-bold">Appointment Details</strong>
+                        <hr>
+                        <p>Date :{{ app.date }}</p>
+                        <p>{{ app.details }}</p>
+                    </div>
+                    
+                    <input class="form-control form-control-lg mt-1" id="details" type="text" placeholder="Appointment details, how did it go?"[(ngModel)]="appDetails" *ngIf="!complete">    
                 </div>
 
             </div>
             <div class="card-footer">
                 <div class="btn-group d-flex">
-                    <button class="btn btn-primary" (click)="markAsCompleted()">Mark as completed</button>
+                    <button class="btn btn-primary" (click)="markAsCompleted()" *ngIf="!complete">Mark as completed</button>
                     <button class="btn btn-secondary" routerLink="/">Back</button>
                 </div>
             </div>
