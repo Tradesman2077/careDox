@@ -19,6 +19,7 @@ namespace API.Extensions
             services.AddScoped<IPatientRepository, PatientRepository>();
             services.AddScoped<ICarePlanRepository, CarePlanRepository>();
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+            services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddDbContext<DataContext>(options => {
                 options.UseSqlite(config.GetConnectionString("DefaultConnection"));
