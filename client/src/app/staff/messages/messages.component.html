@@ -1,12 +1,21 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-
-            <h4>
+            <button class="btn btn-success" routerLink="/create">New Message</button>
+            <h4 class="card-title text-center mb-1 mt-2">
                 Your Messages
             </h4>
-            <button class="btn btn-success" routerLink="/create">New Message</button>
-            <p *ngFor="let msg of messages">{{msg.id}}</p>
+            <hr>
+            <div *ngFor="let msg of messages">
+                
+                <h5>From : {{msg.senderUsername}}</h5>
+                <p style="background-color:rgb(243, 243, 243)">{{msg.content}}</p>
+                <p>{{msg.dateSent}}</p>
+                <button class="btn btn-warning">Mark As Read</button>
+                <button class="btn btn-success" (click)="markAsRead()">Reply</button>
+                <hr>
+            </div>
+           
         </div>
     </div>
 </div>

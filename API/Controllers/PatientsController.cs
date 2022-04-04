@@ -59,7 +59,6 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateUser(PatientDTO patientDto){
             
-            System.Console.WriteLine(patientDto.Id);
             var patient = await _patientRepository.GetUserByIdAsync(patientDto.Id);
             patient.KnownAs = patientDto.KnownAs;
             patient.Name = patientDto.Name;

@@ -16,6 +16,8 @@ namespace API.Interfaces
         
         Task<bool> SaveAllAsync();
 
+        void Update(Message message);
+
 
     }
 }

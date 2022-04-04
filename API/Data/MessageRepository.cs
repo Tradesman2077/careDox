@@ -43,5 +43,9 @@ namespace API.Data
         {
             return await _context.SaveChangesAsync() > 0;
         }
+          public void Update(Message message)
+        {
+            _context.Entry(message).State = EntityState.Modified;
+        }
     }
 }
