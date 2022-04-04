@@ -4,14 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Entities;
 using API.Interfaces;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
+    
     public class MessageRepository : IMessageRepository
     {
+        public IMapper _mapper;
         private readonly DataContext _context;
-        public MessageRepository(DataContext context){
+        public MessageRepository(DataContext context, IMapper mapper){
             _context = context;
+            _mapper = mapper;
         }
         public void AddMessage(Message message)
         {
@@ -28,9 +33,10 @@ namespace API.Data
             return await _context.Messages.FindAsync(id);
         }
 
-        public Task<IEnumerable<Message>> GetMessagesForUser(int id)
+        public async Task<IEnumerable<Message>> GetMessagesForUserAsync(int id)
         {
-            throw new NotImplementedException();
+           return await _context.Messages.Where(x => x.RecipientId == id).ToListAsync();
+
         }
 
         public async Task<bool> SaveAllAsync()

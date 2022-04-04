@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class MessagesController : BaseApiController
     {
         private readonly IUserRepository _userRepository;
@@ -27,14 +27,16 @@ namespace API.Controllers
             if(message.RecipientId == message.SenderId ){
                 return BadRequest("you cant send messages to yourself");
             }
-            var sender = await _userRepository.GetUserByIdAsync(message.SenderId);
-            var recipient = await _userRepository.GetUserByIdAsync(message.RecipientId);
-            if(recipient == null || sender == null){
-                return NotFound();
-            }
             _messageRepository.AddMessage(message);
             if(await _messageRepository.SaveAllAsync()) return Ok();
             return BadRequest("Message sending failed");
+        }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<Message>>>GetMessagesById(int id)
+        {
+            var messages = await _messageRepository.GetMessagesForUserAsync(id);
+            return Ok(messages);
+
         }
 
     }

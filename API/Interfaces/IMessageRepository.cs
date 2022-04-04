@@ -12,7 +12,7 @@ namespace API.Interfaces
         void DeleteMessage(Message message);
 
         Task<Message> GetMessage(int id);
-        Task<IEnumerable<Message>> GetMessagesForUser(int id);
+        Task<IEnumerable<Message>> GetMessagesForUserAsync(int id);
         
         Task<bool> SaveAllAsync();
 

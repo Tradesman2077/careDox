@@ -14,7 +14,8 @@ export class MessageService {
     return this.http.get<Message>(this.baseUrl + 'messages/' + id);
   }
   createMessage(message:Message){
-    return this.http.post<Message>(this.baseUrl + 'messages/createMessage', message);
+    console.log(message);
+    return this.http.post(this.baseUrl + 'messages/' + 'createMessage', message);
   }
 
 }

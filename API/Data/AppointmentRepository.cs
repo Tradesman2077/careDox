@@ -32,16 +32,13 @@ namespace API.Data
             if(app!=null){
                 storedDate = app.Date.ToString().Remove(10);
                 if(storedDate == todaysDate){
-                    Console.WriteLine("here1" + app.Details);
                     return app;
                 }
                 else{
-                    Console.WriteLine("here2" + app.Details);
                     return null;
                 }
             }
             else{
-                Console.WriteLine("here3");
                 return null;
             }
         }
