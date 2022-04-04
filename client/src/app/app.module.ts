@@ -30,6 +30,7 @@ import { RegisterStaffdetailsComponent } from './register/register-staffdetails/
 import { PatientAddRemoveEditComponent } from './patient-add-remove-edit/patient-add-remove-edit.component';
 import { PatientEditComponent } from './patient-edit/patient-edit.component';
 import { CarePlanEditComponent } from './care-plan-edit/care-plan-edit.component';
+import { CreateMessageComponent } from './create-message/create-message.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { CarePlanEditComponent } from './care-plan-edit/care-plan-edit.component
     RegisterStaffdetailsComponent,
     PatientAddRemoveEditComponent,
     PatientEditComponent,
-    CarePlanEditComponent
+    CarePlanEditComponent,
+    CreateMessageComponent
     
   ],
   imports: [

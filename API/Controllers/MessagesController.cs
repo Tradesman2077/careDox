@@ -21,7 +21,7 @@ namespace API.Controllers
             _messageRepository = messageRepository;
         }
 
-        [HttpPost]
+        [HttpPost("createMessage")]
         public async Task<ActionResult<Message>>CreateMessage(Message message)
         {
             if(message.RecipientId == message.SenderId ){
@@ -32,7 +32,7 @@ namespace API.Controllers
             if(recipient == null || sender == null){
                 return NotFound();
             }
-            _messageRepository.AddMessage(message, message.SenderId);
+            _messageRepository.AddMessage(message);
             if(await _messageRepository.SaveAllAsync()) return Ok();
             return BadRequest("Message sending failed");
         }

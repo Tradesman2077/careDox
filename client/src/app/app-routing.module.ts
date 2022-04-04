@@ -2,6 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { CarePlanEditComponent } from './care-plan-edit/care-plan-edit.component';
+import { CreateMessageComponent } from './create-message/create-message.component';
 import { NotFoundComponent } from './Errors/not-found/not-found.component';
 import { TestErrorsComponent } from './Errors/test-errors/test-errors.component';
 import { HomeComponent } from './home/home.component';
@@ -42,7 +43,8 @@ const routes: Routes = [
       {path: 'admin', component: AdminComponent}, 
       {path: 'server-error', component: ServerErrorComponent},
       {path:'patients/:id', component: PatientDetailsComponent},
-      {path: 'patientListEdit/:username', component: PatientListEditComponent}
+      {path: 'patientListEdit/:username', component: PatientListEditComponent},
+      {path:'create', component: CreateMessageComponent}
     ]
   },
   {path:'errors', component: TestErrorsComponent},
