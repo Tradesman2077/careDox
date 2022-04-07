@@ -8,11 +8,11 @@
             <hr>
             <div *ngFor="let msg of messages">
                 
-                <h5>From : {{msg.senderUsername}}</h5>
+                <h5>From : {{msg.senderUsername}} <em *ngIf="hasUnread" style="color: crimson;">unread</em></h5>
                 <p style="background-color:rgb(243, 243, 243)">{{msg.content}}</p>
                 <p>{{msg.dateSent}}</p>
-                <button class="btn btn-warning">Mark As Read</button>
-                <button class="btn btn-success" (click)="markAsRead()">Reply</button>
+                <button class="btn btn-warning" (click)="markAsRead(msg.id)" *ngIf="hasUnread">Mark As Read</button>
+                <button class="btn btn-success" routerLink="/create">Reply</button>
                 <hr>
             </div>
            

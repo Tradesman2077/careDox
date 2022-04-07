@@ -1,5 +1,6 @@
 
 <div class="row">
+    <p *ngIf="hasUnread" style="background-color:orangered; color: white;">You have new messages in your inbox</p>
     <div *ngFor="let patient of patients" class="col-6">
         <app-patient-card [patient]="patient"></app-patient-card>
     </div>

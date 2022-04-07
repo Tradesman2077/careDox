@@ -39,15 +39,15 @@ namespace API.Controllers
             return Ok(messages);
 
         }
-        [HttpPut("update")]
+        [HttpPut("{id}")]
         public async Task<ActionResult> Update(int id)
         {
+            Console.WriteLine("here//////////////////" + id);
             var message = await _messageRepository.GetMessage(id);
             message.DateRead = DateTime.Now;
+            Console.WriteLine(message.DateRead);
             if(await _messageRepository.SaveAllAsync()) return NoContent();
-
             return BadRequest("Failed to update patient");
-
         }
 
     }

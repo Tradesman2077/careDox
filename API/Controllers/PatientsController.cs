@@ -29,7 +29,6 @@ namespace API.Controllers
 
         public async Task<ActionResult<IEnumerable<Patient>>> GetPatients()
         {   
-            Console.WriteLine("/////here");
             return await _context.Patients.ToListAsync();
         }
 

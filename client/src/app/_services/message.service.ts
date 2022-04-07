@@ -14,14 +14,28 @@ export class MessageService {
   constructor(private http: HttpClient) { 
   }
   getMessagesByUserId(id:number){
-
-    //return this.http.get<Message[]>(this.baseUrl + 'messages/' + id);
-    // if(this.messages.length > 0) return of(this.messages);
     return this.http.get<Message[]>(this.baseUrl + 'messages/' + id).pipe(
       map(messages => {
         this.messages = messages;
-        console.log(this.messages);
+        
         return this.messages;
+      })
+    )
+  }
+  checkForUnreadMessages(id:number){
+    let hasUnread = false;
+    return this.http.get<Message[]>(this.baseUrl + 'messages/' + id).pipe(
+      map(messages => {
+        this.messages = messages;
+        for(let i =0; i< this.messages.length; i++){
+          if(this.messages[i].dateRead.toString() == '0001-01-01 00:00:00'){
+            hasUnread = true;
+          }
+          else{
+            hasUnread = false;
+          }
+        }
+        return hasUnread;
       })
     )
   }
@@ -29,8 +43,9 @@ export class MessageService {
     console.log(message);
     return this.http.post(this.baseUrl + 'messages/' + 'createMessage', message);
   }
-  updateMessage(messageId:number, date:Date){
-    
+  updateMessage(messageId:number){
+    return this.http.put(this.baseUrl + 'messages/'+ messageId, messageId);
   }
+  
 
 }

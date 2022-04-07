@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Patient } from '../_models/Patient';
 import { Staff } from '../_models/Staff';
+import { MessageService } from '../_services/message.service';
 import { PatientService } from '../_services/patient.service';
 import { StaffService } from '../_services/staff.service';
 
@@ -14,39 +15,36 @@ export class PatientListComponent implements OnInit {
   patients: Patient[] =[];
   patNumList: string[] = [];
   user: Staff;
-  constructor(private patientsService: PatientService, private staffService : StaffService) { }
+  hasUnread:boolean;
+  constructor(private patientsService: PatientService, private staffService : StaffService, private messageService : MessageService) { }
 
   ngOnInit(): void {
     this.getPatientsInPatientList();
   }
-
   getPatients(){
     this.patientsService.getPatients().subscribe(patients =>{
       this.patients = patients;
     })
   }
-
   getPatientsInPatientList(){
     //get this staff members patients
-
     let user = JSON.parse(localStorage.getItem("user"));
-
     this.staffService.getOneStaffUser(user["username"]).subscribe(user =>{
       this.user = user;
       for(let i = 0; i < user.patientList.length; i++){
-
         if(user.patientList[i] !== ","){
           this.patNumList.push(user.patientList[i]);
         }
       }
-
       for(let i = 0; i < this.patNumList.length; i++){
         this.patientsService.getPatientById(parseInt(this.patNumList[i])).subscribe(patient =>{
           this.singlePatient = patient;
           this.patients.push(this.singlePatient);
         });
       }
+      this.messageService.checkForUnreadMessages(this.user.id).subscribe(hasUnread =>{
+        this.hasUnread = hasUnread;
+      });
     });
   }
-  
 }
