@@ -61,3 +61,4 @@ C:\Users\chris\Documents\careDox\API\bin\Debug\net6.0\Microsoft.IdentityModel.Pr
 C:\Users\chris\Documents\careDox\API\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\chris\Documents\careDox\API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\chris\Documents\careDox\API\bin\Debug\net6.0\Data\UserSeedData.json
+C:\Users\chris\Documents\careDox\API\bin\Debug\net6.0\API.staticwebassets.runtime.json
