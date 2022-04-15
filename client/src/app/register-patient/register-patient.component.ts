@@ -20,11 +20,16 @@ export class RegisterPatientComponent implements OnInit {
   }
 
   registerPatient(){
+    //edit dateTIme
+    let dob = this.model.dateOfBirth + "T00:00";
+
+
     this.patientService.registerPatient(this.model).subscribe(response =>{
       
     });
     this.toastr.success("Patient added");
   }
+
 
 
 }

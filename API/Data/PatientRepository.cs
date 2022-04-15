@@ -37,6 +37,7 @@ namespace API.Data
 
         public async Task<string> RegisterPatient(Patient patient)
         {
+            Console.WriteLine("HERE_Controller///////////////////" + patient.Name);
             _context.Add(patient);
             if(await _context.SaveChangesAsync() > 0){
                 return "";
