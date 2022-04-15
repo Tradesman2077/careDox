@@ -28,7 +28,7 @@ export class MessageService {
       map(messages => {
         this.messages = messages;
         for(let i =0; i< this.messages.length; i++){
-          if(this.messages[i].dateRead.toString() == '0001-01-01 00:00:00'){
+          if(this.messages[i].dateRead.toString() == '0001-01-01T00:00:00'){
             hasUnread = true;
           }
           else{
