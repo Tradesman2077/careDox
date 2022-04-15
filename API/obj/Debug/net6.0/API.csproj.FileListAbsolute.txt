@@ -62,3 +62,5 @@ C:\Users\chris\Documents\careDox\API\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\chris\Documents\careDox\API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\chris\Documents\careDox\API\bin\Debug\net6.0\Data\UserSeedData.json
 C:\Users\chris\Documents\careDox\API\bin\Debug\net6.0\API.staticwebassets.runtime.json
+C:\Users\chris\Documents\careDox\API\bin\Debug\net6.0\Npgsql.dll
+C:\Users\chris\Documents\careDox\API\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
