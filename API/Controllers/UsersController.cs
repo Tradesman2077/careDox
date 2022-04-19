@@ -46,7 +46,6 @@ namespace API.Controllers
         public async Task<ActionResult> UpdateUser(StaffUpdateDTO staffUpdateDto){
 
             var user = await _userRepository.GetUserByUsernameAsync(staffUpdateDto.UserName);
-            System.Console.WriteLine(user.UserName);
 
             user.FullName = staffUpdateDto.FullName;
             user.Address = staffUpdateDto.Address;

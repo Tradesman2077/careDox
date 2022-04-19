@@ -12,6 +12,6 @@ namespace API.Interfaces
         void Update(CarePlan carePlan);
         Task<bool> SaveAllAsync();
         Task<CarePlan> GetPlanByIdAsync(int id);
-
+        Task<CarePlan> AddPlan(CarePlan plan);
     }
 }

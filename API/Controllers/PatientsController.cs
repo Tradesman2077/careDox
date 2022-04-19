@@ -62,7 +62,8 @@ namespace API.Controllers
             patient.KnownAs = patientDto.KnownAs;
             patient.Name = patientDto.Name;
             patient.Address = patientDto.Address;
-            patient.Gender = patientDto.Gender;          
+            patient.Gender = patientDto.Gender;
+            patient.CarePlanId = patientDto.CarePlanId;          
             _patientRepository.Update(patient);
 
             if(await _patientRepository.SaveAllAsync()) return NoContent();

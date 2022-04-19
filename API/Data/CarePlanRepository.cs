@@ -16,7 +16,9 @@ namespace API.Data
         }
         public async Task<CarePlan> GetPlanByIdAsync(int id)
         {
-            return await _context.CarePlans.FindAsync(id);
+            var plan = await _context.CarePlans.FirstOrDefaultAsync(x => x.Id == id);
+
+            return plan;
         }
 
         public void Update(CarePlan carePlan)
@@ -27,8 +29,14 @@ namespace API.Data
         {
             return await _context.SaveChangesAsync() > 0;
         }
-
-
-        
+        public async Task<CarePlan> AddPlan(CarePlan plan){
+            _context.Add(plan);
+            if(await _context.SaveChangesAsync() > 0){
+                return await _context.CarePlans.FirstOrDefaultAsync(x => x.PatientId == plan.PatientId);
+            }
+            else{
+                return null;
+            }
+        }
     }
 }

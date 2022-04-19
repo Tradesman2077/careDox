@@ -28,13 +28,20 @@ namespace API.Controllers
         
         public async Task<ActionResult<CarePlan>> GetPlan(int id)
         {
-            
-            return await _context.CarePlans.FindAsync(id);
+            return await _carePlanRepository.GetPlanByIdAsync(id);
         }
+
+        [HttpPost("addCarePlan")]
+        public async Task<ActionResult<CarePlan>> AddPlan(CarePlan plan){
+
+            return await _carePlanRepository.AddPlan(plan);
+            
+        }
+
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateCarePlan(CarePlanDTO carePlanDTO){
          
-            
+
             var carePlan = await _carePlanRepository.GetPlanByIdAsync(carePlanDTO.Id);
 
             carePlan.LevelOfUnderstanding = carePlanDTO.LevelOfUnderstanding;
