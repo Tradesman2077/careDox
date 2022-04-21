@@ -14,5 +14,6 @@ namespace API.Entities
         public string Gender { get; set; }
         public string Address { get; set; }
         public int CarePlanId { get; set; }
+        public string ContactNumber { get; set;}
     }
 }
