@@ -22,13 +22,19 @@ namespace API.Data
         public async Task<Appointment> GetAppointmentByIdAsync(int id)
         {
             var app =  await _context.Appointments.FirstOrDefaultAsync(x => x.PatientId == id);
-            var date = DateTime.Now.ToString("yyyy-mm-dd");
+            var date = DateTime.Now.ToString().Remove(10);
 
+            //reformat dateTime
+            var todaysDate = "";
+            todaysDate = date.Replace('-', '/');
             var storedDate = "";
+
+            System.Console.WriteLine(todaysDate);
+            System.Console.WriteLine(app.Date.ToString().Remove(10));
 
             if(app!=null){
                 storedDate = app.Date.ToString().Remove(10);
-                if(storedDate == date){
+                if(storedDate == todaysDate){
                     return app;
                 }
                 else{
