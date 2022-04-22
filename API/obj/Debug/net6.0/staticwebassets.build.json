@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "poLY07E3J70xn0YcJuYf63xAVnxj+N5gq5VeXVTlQzU=",
+  "Hash": "fZpe45KVP4yQVtDifpjU+Acn3rbAJA00yeuso4I2An0=",
   "Source": "API",
   "BasePath": "_content/API",
   "Mode": "Default",
@@ -204,12 +204,12 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "C:\\Users\\chris\\Documents\\careDox\\API\\wwwroot\\main.86d2746d098974f003ad.js",
+      "Identity": "C:\\Users\\chris\\Documents\\careDox\\API\\wwwroot\\main.60e99e09af79477b73fe.js",
       "SourceId": "API",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\chris\\Documents\\careDox\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "main.86d2746d098974f003ad.js",
+      "RelativePath": "main.60e99e09af79477b73fe.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -218,7 +218,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\main.86d2746d098974f003ad.js"
+      "OriginalItemSpec": "wwwroot\\main.60e99e09af79477b73fe.js"
     },
     {
       "Identity": "C:\\Users\\chris\\Documents\\careDox\\API\\wwwroot\\polyfills.22775e25c7a3d5110353.js",
