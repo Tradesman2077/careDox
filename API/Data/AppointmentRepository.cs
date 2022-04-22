@@ -21,8 +21,8 @@ namespace API.Data
 
         public async Task<Appointment> GetAppointmentByIdAsync(int id)
         {
-            var app =  await _context.Appointments.FirstOrDefaultAsync(x => x.PatientId == id);
-            var date = DateTime.Now.ToString().Remove(10);
+            var app =  await _context.Appointments.OrderByDescending(x => x.Date).FirstOrDefaultAsync(x => x.PatientId == id);
+            var date = DateTime.Now.ToString("yyyy-mm-dd").Remove(10);
 
             //reformat dateTime
             var todaysDate = "";
