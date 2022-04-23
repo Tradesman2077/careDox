@@ -29,9 +29,6 @@ namespace API.Data
             todaysDate = date.Replace('-', '/');
             var storedDate = "";
 
-            System.Console.WriteLine(todaysDate);
-            System.Console.WriteLine(app.Date.ToString().Remove(10));
-
             if(app!=null){
                 storedDate = app.Date.ToString().Remove(10);
                 if(storedDate == todaysDate){
