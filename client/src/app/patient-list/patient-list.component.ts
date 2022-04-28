@@ -13,7 +13,6 @@ import { StaffService } from '../_services/staff.service';
 export class PatientListComponent implements OnInit {
   singlePatient: Patient;
   patients: Patient[] =[];
-  patNumList: string[] = [];
   user: Staff;
   hasUnread:boolean;
   constructor(private patientsService: PatientService, private staffService : StaffService, private messageService : MessageService) { }
@@ -31,15 +30,14 @@ export class PatientListComponent implements OnInit {
     let user = JSON.parse(localStorage.getItem("user"));
     this.staffService.getOneStaffUser(user["username"]).subscribe(user =>{
       this.user = user;
-      for(let i = 0; i < user.patientList.length; i++){
-        if(user.patientList[i] !== ","){
-          this.patNumList.push(user.patientList[i]);
-        }
-      }
-      for(let i = 0; i < this.patNumList.length; i++){
-        this.patientsService.getPatientById(parseInt(this.patNumList[i])).subscribe(patient =>{
+      let patArr = this.user.patientList.split(",");
+      patArr.pop();
+      for(let i = 0; i < patArr.length; i++){
+        this.patientsService.getPatientById(parseInt(patArr[i])).subscribe(patient =>{
           this.singlePatient = patient;
-          this.patients.push(this.singlePatient);
+          if(this.singlePatient != null){
+            this.patients.push(this.singlePatient);
+          }
         });
       }
       this.messageService.checkForUnreadMessages(this.user.id).subscribe(hasUnread =>{

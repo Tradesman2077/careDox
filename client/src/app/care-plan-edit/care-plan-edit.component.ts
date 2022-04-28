@@ -18,26 +18,59 @@ export class CarePlanEditComponent implements OnInit {
   patientId:number;
   planId:any;
   patient:Patient;
-  carePlan: CarePlan;
+  carePlan: any;
+  plan:any ;
 
   constructor(private route: ActivatedRoute, private carePlanService: CareplanService, private patientService: PatientService,
     private toaster: ToastrService
     ) { }
 
   ngOnInit(): void {
-    this.patientId = parseInt(this.route.snapshot.paramMap.get("id"));
-    this.getCarePlan();
-    
+    this.getPatient();
   }
-
-  getCarePlan(){
+  getPatient(){
+    this.patientId = parseInt(this.route.snapshot.paramMap.get("id"));
     this.patientService.getPatientById(this.patientId).subscribe(patient=>{
       this.patient = patient;
+      this.checkIfHasCarePlan(patient);
     });
-
-    this.carePlanService.getCarePlanById(this.patient.carePlanId).subscribe(carePlan =>{
-      this.carePlan = carePlan;
+  }
+  checkIfHasCarePlan(patient:any){ 
+    if(patient.carePlanId == 0){
+      var plan:CarePlan = {
+        id: 0,
+        levelOfUnderstanding : "",
+        communication: "",
+        mobility: "",
+        personalCare: "",
+        continenceCare: "",
+        oralCare: "",
+        nutritionAndHydration : "",
+        skinCare: "",
+        interestsAndHobbies: "",
+        mentalHealth: "",
+        medication: "",
+        eolPref: "",
+        religiousAndCulturalBeliefs:"",
+        patientId :this.patient.id
+      };
+      this.carePlanService.addNewPlan(plan).subscribe(planFromApi => {
+        this.plan = planFromApi;
+        this.plan.patientId = this.patient.id;
+        this.patient.carePlanId = this.plan.id;
+        this.patientService.updatePatient(this.patient, this.patient.id).subscribe();
+      });
       
+    }
+    else{
+      console.log("hasplan");
+      this.getPlan(this.patient.carePlanId);
+    }
+  }
+  getPlan(id:any){
+    //problem is here 
+    this.carePlanService.getCarePlanById(id).subscribe(carePlan =>{
+      this.carePlan = carePlan;
     });
   }
   updateCarePlan(){

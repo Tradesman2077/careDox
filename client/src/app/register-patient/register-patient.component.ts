@@ -1,5 +1,7 @@
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { CarePlanEditComponent } from '../care-plan-edit/care-plan-edit.component';
+import { CareplanService } from '../_services/careplan.service';
 import { PatientService } from '../_services/patient.service';
 
 @Component({
@@ -13,21 +15,16 @@ export class RegisterPatientComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
 
   model: any = {};
-
-  constructor(private patientService : PatientService, private toastr : ToastrService) { }
+  plan:any = {};
+  constructor(private patientService : PatientService, private toastr : ToastrService, private carePlanService : CareplanService) { }
 
   ngOnInit(): void {
   }
 
   registerPatient(){
-    //edit dateTIme
-    let dob = this.model.dateOfBirth + "T00:00";
-
-
-    this.patientService.registerPatient(this.model).subscribe(response =>{
-      
-    });
-    this.toastr.success("Patient added");
+    this.patientService.registerPatient(this.model).subscribe(
+    );
+    this.toastr.success("Patient was added");
   }
 
 

@@ -1,7 +1,7 @@
 <div class="container">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" routerLink="/">CAREdox</a>
+      <a class="navbar-brand" routerLink="/"><i class="fa fa-plus" aria-hidden="true" style="color: #28b62c;"></i> CAREdox</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -24,9 +24,9 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="messages" routerLinkActive="active">Messages</a>
           </li>
-          <!--<li class="nav-item">
-            <a class="nav-link" routerLink="/profile/{{model.username}}" routerLinkActive="active">Profile</a>
-          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="/" style="color: rgb(0, 173, 0);">{{model.username}}</a>
+          </li> 
           <li class="nav-item">
             <a class="nav-link" href="#"(click)="logout()">Logout</a>
           </li>
@@ -57,4 +57,5 @@
 <div *ngIf="(accountService.currentUser$ | async) === null" style="text-align: center; padding-top: 2%;">
   <h1>Welcome to CAREdox</h1>
   <p class="lead">Login to view your schedule</p>
+  <i class="aside">Caredox is an open source solution to patient and careplan management. For more info email caredox.contact@gmail.com</i>
 </div >

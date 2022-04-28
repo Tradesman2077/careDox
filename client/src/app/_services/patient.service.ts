@@ -41,6 +41,7 @@ export class PatientService {
     return this.http.delete(this.baseUrl + 'patients/'+ id);
   }
   updatePatient(patient : Patient, id : number){
+    console.log(patient);
     return this.http.put(this.baseUrl + 'patients/' + id, patient);
   }
 }

@@ -49,14 +49,14 @@ export class PatientListEditComponent implements OnInit {
   }
   getPatientsInPatientList()
   {
+    this.patNumList = this.staff.patientList.split(",");
+    this.patNumList.pop();
     //get this staff members patients
- 
-    
-    for(let i = 0; i < this.staff.patientList.length; i++){
-      if(this.staff.patientList[i] !== ","){
-        this.patNumList.push(this.staff.patientList[i]);
-      }
-    }
+    // for(let i = 0; i < this.staff.patientList.length; i++){
+    //   if(this.staff.patientList[i] !== ","){
+    //     this.patNumList.push(this.staff.patientList[i]);
+    //   }
+    // }
     console.log(this.patNumList);
     for(let i = 0; i < this.patNumList.length; i++){
         this.patientsService.getPatientById(parseInt(this.patNumList[i])).subscribe(patient =>{

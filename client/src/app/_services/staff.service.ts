@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { __await } from 'tslib';
 import { Staff } from '../_models/Staff';
 import { PatientService } from './patient.service';
 

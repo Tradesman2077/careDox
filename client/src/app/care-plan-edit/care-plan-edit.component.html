@@ -1,80 +1,77 @@
-<div class="row"  *ngIf="carePlan">
+<div class="row" *ngIf="carePlan">
     <div class="alert alert-info" *ngIf="editFormCarePlan.dirty">
         <strong> Information: </strong> You have made changes. Any unsaved changes will be lost
-</div>
+    </div>
 
-
-<div class="col8" >
-    <div class="row">
-        <div class="card">
-            <h5 class="pl-3 pt-3">Edit CarePlan <i style="color: darkgrey;">{{patient.name}}</i></h5>
-            <!--<img style="height: 85%; width: 85%; margin: 15px;" src="{{staff.photoUrl || 'assets/male_carer.jpg'}}" alt="{{staff.fullname}}" 
-                 class="card-img-top img-thumbnail" >-->
-            <div class="card-body">
-            <form id="editFormCarePlan" #editFormCarePlan ="ngForm" (ngSubmit) = "updateCarePlan()">
-                <div>
-                    <strong class="str">Level Of Understanding:</strong>
-                </div>
-                <textarea class="form-control" [(ngModel)]="carePlan.levelOfUnderstanding" name="levelofUnderstanding" rows="1"></textarea>
-                <div>
-                    <strong class="str">Communication:</strong>
-                </div>
-                <textarea class="form-control" [(ngModel)]="carePlan.communication" name="communication" rows="1"></textarea>
-                <div>
-                    <strong class="str">Mobility:</strong>
-                </div>
-                <textarea class="form-control" [(ngModel)]="carePlan.mobility" name="mobility" rows="1"></textarea>
-                <div>
-                    <strong class="str">Personal Care:</strong>
-                </div>
-                <textarea class="form-control" [(ngModel)]="carePlan.personalCare" name="personalCare" rows="1"></textarea>
-                <div>
-                    <strong class="str">Continence Care:</strong>
-                </div>
-                <textarea class="form-control" [(ngModel)]="carePlan.continenceCare" name="continenceCare" rows="1"></textarea>
-                <div>
-                    <strong class="str">Oral Care:</strong>
-                </div>
-                <textarea class="form-control" [(ngModel)]="carePlan.oralCare" name="oralCare" rows="1"></textarea>
-                <div>
-                    <strong class="str">Nutrition and Hydration:</strong>
-                </div>
-                <textarea class="form-control" [(ngModel)]="carePlan.nutritionAndHydration" name="nutricianAndDehydration" rows="1"></textarea>
-                <div>
-                    <strong class="str">Skin Care:</strong>
-                </div>
-                <textarea class="form-control" [(ngModel)]="carePlan.skinCare" name="skinCare" rows="1"></textarea>
-                <div>
-                    <strong class="str">Interests and Hobbies:</strong>
-                </div>
-                <textarea class="form-control" [(ngModel)]="carePlan.interestsAndHobbies" name="interestsAndHobbies" rows="1"></textarea>
-                <div>
-                    <strong class="str">Mental Health:</strong>
-                </div>
-                <textarea class="form-control" [(ngModel)]="carePlan.mentalHealth" name="mentalHealth" rows="1"></textarea>
-                <div>
-                    <strong class="str">Medication:</strong>
-                </div>
-                <textarea class="form-control" [(ngModel)]="carePlan.medication" name="medication" rows="1"></textarea>
-                <div>
-                    <strong class="str">Eol Preference:</strong>
-                </div>
-                <textarea class="form-control" [(ngModel)]="carePlan.eolPref" name="eolPref" rows="1"></textarea>
-                <div>
-                    <strong class="str">Religious and Cultural Beliefs:</strong>
-                </div>
-                <textarea class="form-control" [(ngModel)]="carePlan.religiousAndCulturalBeliefs" name="religiousAndCulturalBeliefs" rows="1"></textarea>
-                
-            </form>
+    <div class="col-12" >
+        <div class="row">
+            <div class="card">
+                <h5 class="pl-3 pt-3">Edit CarePlan <i style="color: darkgrey;">{{patient.name}}</i></h5>
+                <!--<img style="height: 85%; width: 85%; margin: 15px;" src="{{staff.photoUrl || 'assets/male_carer.jpg'}}" alt="{{staff.fullname}}" 
+                    class="card-img-top img-thumbnail" >-->
+                <div class="card-body">
+                <form id="editFormCarePlan" #editFormCarePlan ="ngForm" (ngSubmit) = "updateCarePlan()">
+                    <div>
+                        <strong class="str">Level Of Understanding:</strong>
+                    </div>
+                    <textarea class="form-control" [(ngModel)]="carePlan.levelOfUnderstanding" name="levelofUnderstanding" rows="1"></textarea>
+                    <div>
+                        <strong class="str">Communication:</strong>
+                    </div>
+                    <textarea class="form-control" [(ngModel)]="carePlan.communication" name="communication" rows="1"></textarea>
+                    <div>
+                        <strong class="str">Mobility:</strong>
+                    </div>
+                    <textarea class="form-control" [(ngModel)]="carePlan.mobility" name="mobility" rows="1"></textarea>
+                    <div>
+                        <strong class="str">Personal Care:</strong>
+                    </div>
+                    <textarea class="form-control" [(ngModel)]="carePlan.personalCare" name="personalCare" rows="1"></textarea>
+                    <div>
+                        <strong class="str">Continence Care:</strong>
+                    </div>
+                    <textarea class="form-control" [(ngModel)]="carePlan.continenceCare" name="continenceCare" rows="1"></textarea>
+                    <div>
+                        <strong class="str">Oral Care:</strong>
+                    </div>
+                    <textarea class="form-control" [(ngModel)]="carePlan.oralCare" name="oralCare" rows="1"></textarea>
+                    <div>
+                        <strong class="str">Nutrition and Hydration:</strong>
+                    </div>
+                    <textarea class="form-control" [(ngModel)]="carePlan.nutritionAndHydration" name="nutricianAndDehydration" rows="1"></textarea>
+                    <div>
+                        <strong class="str">Skin Care:</strong>
+                    </div>
+                    <textarea class="form-control" [(ngModel)]="carePlan.skinCare" name="skinCare" rows="1"></textarea>
+                    <div>
+                        <strong class="str">Interests and Hobbies:</strong>
+                    </div>
+                    <textarea class="form-control" [(ngModel)]="carePlan.interestsAndHobbies" name="interestsAndHobbies" rows="1"></textarea>
+                    <div>
+                        <strong class="str">Mental Health:</strong>
+                    </div>
+                    <textarea class="form-control" [(ngModel)]="carePlan.mentalHealth" name="mentalHealth" rows="1"></textarea>
+                    <div>
+                        <strong class="str">Medication:</strong>
+                    </div>
+                    <textarea class="form-control" [(ngModel)]="carePlan.medication" name="medication" rows="1"></textarea>
+                    <div>
+                        <strong class="str">Eol Preference:</strong>
+                    </div>
+                    <textarea class="form-control" [(ngModel)]="carePlan.eolPref" name="eolPref" rows="1"></textarea>
+                    <div>
+                        <strong class="str">Religious and Cultural Beliefs:</strong>
+                    </div>
+                    <textarea class="form-control" [(ngModel)]="carePlan.religiousAndCulturalBeliefs" name="religiousAndCulturalBeliefs" rows="1"></textarea>
+                </form>
             </div>
-                
-                <div class="card-footer">
-
-                    <button [disabled]="!editFormCarePlan.dirty" form="editFormCarePlan" class="btn btn-primary btn-block">Save changes</button>
-                </div>
+            <div class="card-footer">
+                <button form="editFormCarePlan" class="btn btn-primary btn-block">Save changes</button>
             </div>
         </div>
     </div>
 </div>
+
 <div class="col-8" style="float:none;margin:auto;"> 
+    <button class="btn btn-secondary btn-block" routerLink="/patients/{{patient.id}}">Back</button>
 </div>

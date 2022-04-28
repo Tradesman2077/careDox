@@ -39,8 +39,6 @@ export class PatientDetailsComponent implements OnInit {
     this.staffService.getOneStaffUser(user["username"]).subscribe(user =>{
       this.user = user;
     })
-    console.log(this.app);
-    console.log(this.complete);
   }
   loadPatient(){
     this.patientservice.getPatientById(+this.route.snapshot.paramMap.get('id')).subscribe(patient => {
@@ -64,13 +62,15 @@ export class PatientDetailsComponent implements OnInit {
     });
   }
   checkIfAppointmentExists(id:any){
+    console.log("checking for appt");
     this.appointmentService.getAppointmentById(id).subscribe(response =>{
       if(response!=null){
         this.app = response;
+        console.log(response);
         this.complete = true;
       }
       else{
-        //do nothing
+        console.log("error finding appointment");
       }
     })
   }
