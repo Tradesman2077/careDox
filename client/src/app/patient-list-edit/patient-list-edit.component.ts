@@ -61,7 +61,25 @@ export class PatientListEditComponent implements OnInit {
     for(let i = 0; i < this.patNumList.length; i++){
         this.patientsService.getPatientById(parseInt(this.patNumList[i])).subscribe(patient =>{
           this.singlePatient = patient;
-          this.patients.push(this.singlePatient);
+          if(this.singlePatient!=null){
+            this.patients.push(this.singlePatient);
+          }
+          else{
+            let arr = this.staff.patientList.split(",");
+            let id = this.patNumList[i]
+            if (arr.includes(id)){
+            let index = arr.indexOf(id);
+            arr.splice(index, 1);
+            let list = [];
+
+            for(let i =0; i < arr.length; i++){
+            list.push(arr[i]);
+              } 
+            this.staff.patientList = list.toString();
+            this.staffService.updateStaff(this.staff, this.staff.username).subscribe(() =>{
+            }); 
+            } 
+          }
       });
     }
   }

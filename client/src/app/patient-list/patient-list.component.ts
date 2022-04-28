@@ -38,6 +38,10 @@ export class PatientListComponent implements OnInit {
           if(this.singlePatient != null){
             this.patients.push(this.singlePatient);
           }
+          else{
+            //delete patient
+            
+          }
         });
       }
       this.messageService.checkForUnreadMessages(this.user.id).subscribe(hasUnread =>{
