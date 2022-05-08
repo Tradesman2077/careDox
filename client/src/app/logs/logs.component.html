@@ -1,0 +1,10 @@
+<div class="row" *ngFor="let app of apps">
+    <div class="col-8">
+        <p>Appointment ID: {{app?.id}}</p>
+        <p style="background-color:rgb(231, 230, 230) ;">Patient ID : {{app.patientId}}</p>
+        <p>Carer ID: {{app.carerId}}</p>
+        <p style="background-color:rgb(231, 230, 230) ;">Details : {{app.details}}</p>
+        <p>Date : {{app.date}}</p>
+        <hr>
+    </div>
+</div>

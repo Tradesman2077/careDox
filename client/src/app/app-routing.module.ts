@@ -6,6 +6,7 @@ import { CreateMessageComponent } from './create-message/create-message.componen
 import { NotFoundComponent } from './Errors/not-found/not-found.component';
 import { TestErrorsComponent } from './Errors/test-errors/test-errors.component';
 import { HomeComponent } from './home/home.component';
+import { LogsComponent } from './logs/logs.component';
 import { PatientAddRemoveEditComponent } from './patient-add-remove-edit/patient-add-remove-edit.component';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
 import { PatientEditComponent } from './patient-edit/patient-edit.component';
@@ -35,7 +36,8 @@ const routes: Routes = [
       {path: 'admin/patientEdit', component: PatientAddRemoveEditComponent},
       {path: 'admin/patientEdit/editForm/:id', component: PatientEditComponent},
       {path: 'admin/patientEdit/editForm/:id/carePlan', component: CarePlanEditComponent},
-      {path: 'admin/patientRegister', component: RegisterPatientComponent}, 
+      {path: 'admin/patientRegister', component: RegisterPatientComponent},
+      {path: 'admin/logs', component: LogsComponent}, 
       {path: 'admin/register/registerDetails/:username', component:RegisterStaffdetailsComponent},
       {path: 'patients',  component: PatientListComponent},
       {path: 'messages',  component: MessagesComponent},

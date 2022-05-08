@@ -16,9 +16,7 @@ export class AppointmentService {
   }
 
   getAppointments() {
-    if(this.appointments.length > 0) return of(this.appointments);
-
-    return this.http.get<Appointment[]>(this.baseUrl + 'appointments').pipe(
+    return this.http.get<Appointment[]>(this.baseUrl + 'appointment').pipe(
       map(appointments => {
         this.appointments = appointments;
         return appointments;

@@ -31,6 +31,7 @@ import { PatientAddRemoveEditComponent } from './patient-add-remove-edit/patient
 import { PatientEditComponent } from './patient-edit/patient-edit.component';
 import { CarePlanEditComponent } from './care-plan-edit/care-plan-edit.component';
 import { CreateMessageComponent } from './create-message/create-message.component';
+import { LogsComponent } from './logs/logs.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { CreateMessageComponent } from './create-message/create-message.componen
     PatientAddRemoveEditComponent,
     PatientEditComponent,
     CarePlanEditComponent,
-    CreateMessageComponent
+    CreateMessageComponent,
+    LogsComponent
     
   ],
   imports: [

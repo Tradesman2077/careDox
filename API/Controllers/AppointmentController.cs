@@ -26,13 +26,12 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Appointment>>> GetAppointments()
         {
-            return await _context.Appointments.ToListAsync();
+            return await _context.Appointments.OrderByDescending(x => x.Id).Take(10).ToListAsync();
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<Appointment>> GetAppointmentById(int id)
         {
             return await _appointmentRepository.GetAppointmentByIdAsync(id);
-
         }
         [HttpPost("registerAppointment")]
         public async Task<ActionResult<string>> RegisterAppointment(Appointment appointment){
