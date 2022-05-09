@@ -11,6 +11,7 @@ namespace API.Controllers
 {
     public class BuggyController : BaseApiController
     {
+        //handles errors and sends correct http error code 
         private readonly DataContext _context;
         public BuggyController(DataContext context)
         {

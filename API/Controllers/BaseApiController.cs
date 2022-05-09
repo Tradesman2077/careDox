@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-
+    //base api that other controllers inherit form
     [ApiController]
     [Route("api/[controller]")]
     public class BaseApiController : ControllerBase

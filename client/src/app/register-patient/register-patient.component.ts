@@ -10,8 +10,6 @@ import { PatientService } from '../_services/patient.service';
   styleUrls: ['./register-patient.component.css']
 })
 export class RegisterPatientComponent implements OnInit {
-
-  
   @Output() cancelRegister = new EventEmitter();
 
   model: any = {};
@@ -33,7 +31,5 @@ export class RegisterPatientComponent implements OnInit {
       this.toastr.success("Patient was added");
     }
   }
-
-
 
 }

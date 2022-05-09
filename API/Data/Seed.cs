@@ -12,6 +12,7 @@ namespace API.Data
 {
     public class Seed
     {
+        //seeds initial user
         public static async Task SeedUsers(DataContext context){
 
             if(await context.Users.AnyAsync()) return;

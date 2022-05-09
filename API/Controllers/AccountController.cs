@@ -22,12 +22,10 @@ namespace API.Controllers
             _tokenService = tokenService;
             _context = context;
         }
-
         [HttpPost("register")]
         public async Task<ActionResult<UserDTO>> Register(RegisterDTO registerDTO){
 
             if(await UserExists(registerDTO.Username)) return BadRequest("Username taken");
-                
 
             using var hmac = new HMACSHA512();
 

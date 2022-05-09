@@ -9,6 +9,7 @@ namespace API.Data
 {
     public class DataContext : DbContext
     {
+        //creates migrations for ef core and allows dependancy injection of db
         public DataContext(DbContextOptions options) : base(options)
         {
         }

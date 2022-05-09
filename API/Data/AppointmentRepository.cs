@@ -15,7 +15,6 @@ namespace API.Data
         private readonly DataContext _context;
         public AppointmentRepository(DataContext context)
         {
-
             _context = context;
         }
 

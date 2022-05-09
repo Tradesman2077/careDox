@@ -29,7 +29,6 @@ namespace API.Data
                 
         }
 
-      
         public async Task<IEnumerable<SimplifiedUserDTO>> GetSimplifiedUserDTOsAsync()
         {
             return await _context.Users.ProjectTo<SimplifiedUserDTO>(_mapper.ConfigurationProvider).ToListAsync();

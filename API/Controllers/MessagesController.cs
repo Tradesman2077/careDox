@@ -34,18 +34,15 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<Message>>>GetMessagesById(int id)
         {
-            Console.WriteLine(id);
             var messages = await _messageRepository.GetMessagesForUserAsync(id);
             return Ok(messages);
-
         }
         [HttpPut("{id}")]
         public async Task<ActionResult> Update(int id)
         {
-            Console.WriteLine("here//////////////////" + id);
             var message = await _messageRepository.GetMessage(id);
             message.DateRead = DateTime.Now;
-            Console.WriteLine(message.DateRead);
+
             if(await _messageRepository.SaveAllAsync()) return NoContent();
             return BadRequest("Failed to update patient");
         }

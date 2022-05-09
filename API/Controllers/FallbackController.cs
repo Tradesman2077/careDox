@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    //used to implement kestral server that serves client app from API
     public class FallbackController : Controller
     {
         public ActionResult Index(){
