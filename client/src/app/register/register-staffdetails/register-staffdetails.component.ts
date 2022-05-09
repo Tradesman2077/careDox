@@ -16,18 +16,19 @@ export class RegisterStaffdetailsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-
   update(){
-    this.profile.username = this.route.snapshot.paramMap.get('username');
-    this.profile.patientList = "";
-    console.log(
-      this.profile.username
-    )
-    this.staffService.updateStaff(this.profile, this.profile.username).subscribe(() =>{
+    if(this.profile.fullName == null || this.profile.gender == null || this.profile.contactNumber == null || this.profile.address == null){
+      console.log(this.profile);
+      this.toastr.error("Please fill out all fields");
+      return null;
+    }
+    else{
+      this.profile.username = this.route.snapshot.paramMap.get('username');
+      this.profile.patientList = "";
+      this.staffService.updateStaff(this.profile, this.profile.username).subscribe(() =>{
       this.toastr.success("Profile added successfully");
       this.router.navigateByUrl("/profiles/edit");
-    });
+      });
+    }
   }
-
 }

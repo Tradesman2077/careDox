@@ -24,6 +24,10 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
+    if(this.model.password == null || this.model.username == null){
+      this.toastr.error("Please fill out all fields");
+      return null;
+    }
     this.model.username = this.model.username.toLowerCase();
     this.model.username = this.model.username.replace(/ /g, '');
     this.accountService.registerStaff(this.model).subscribe(response =>{
@@ -48,6 +52,5 @@ export class RegisterComponent implements OnInit {
     this.cancelRegister.emit(false);
   }
 
-
-
+  
 }

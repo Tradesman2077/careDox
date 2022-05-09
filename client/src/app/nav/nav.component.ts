@@ -12,23 +12,28 @@ import { AccountService } from '../_services/account.service';
 })
 export class NavComponent implements OnInit {
   model: any = {}
-
+  adminMode:boolean;
   public isCollapsed = false;
   constructor(public accountService: AccountService, private router : Router,
      private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
-
   login(){
     this.accountService.login(this.model).subscribe(response => {
+      this.checkAdmin();
       this.router.navigateByUrl('/');
     })
   }
-
   logout(){
     this.accountService.logout();
   }
-
-  
+  checkAdmin(){
+    if(localStorage.getItem("user")){
+      var user = JSON.parse(localStorage.getItem("user"));
+      if(user["isAdmin"] == true){
+        this.adminMode = true;
+      }
+    }
+  }
 }

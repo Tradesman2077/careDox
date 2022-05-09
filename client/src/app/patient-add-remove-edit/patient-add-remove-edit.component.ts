@@ -15,8 +15,6 @@ export class PatientAddRemoveEditComponent implements OnInit {
   allPatients: Patient[];
   allStaff: Staff[];
   
-
-
   constructor(private patientsService: PatientService, private staffService: StaffService,
     private toaster: ToastrService) { }
 

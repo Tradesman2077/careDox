@@ -22,9 +22,16 @@ export class RegisterPatientComponent implements OnInit {
   }
 
   registerPatient(){
-    this.patientService.registerPatient(this.model).subscribe(
-    );
-    this.toastr.success("Patient was added");
+    if(this.model.name == null || this.model.address == null || this.model.knownAs == null || 
+        this.model.gender == null || this.model.fullName == null || 
+          this.model.dateOfBirth == null){
+      this.toastr.error("Please fill out all fields");
+      return null;
+    }
+    else{
+      this.patientService.registerPatient(this.model).subscribe();
+      this.toastr.success("Patient was added");
+    }
   }
 
 
